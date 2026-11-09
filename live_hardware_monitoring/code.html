@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"primary":"#4cd7f6","outline":"#869397","on-surface":"#dae2fd","on-error-container":"#ffdad6","secondary-fixed":"#6ffbbe","on-tertiary-fixed-variant":"#653e00","surface-container-low":"#131b2e","on-primary-container":"#00424f","on-tertiary-fixed":"#2a1700","tertiary":"#ffb95f","outline-variant":"#3d494c","on-tertiary":"#472a00","on-background":"#dae2fd","inverse-on-surface":"#283044","background":"#0b1326","primary-fixed":"#acedff","secondary":"#4edea3","on-error":"#690005","tertiary-fixed":"#ffddb8","on-primary-fixed":"#001f26","primary-fixed-dim":"#4cd7f6","tertiary-fixed-dim":"#ffb95f","surface-dim":"#0b1326","on-secondary-fixed":"#002113","surface-container":"#171f33","on-secondary-container":"#00311f","error-container":"#93000a","primary-container":"#06b6d4","surface-container-highest":"#2d3449","surface-container-lowest":"#060e20","surface-bright":"#31394d","on-tertiary-container":"#563400","on-secondary-fixed-variant":"#005236","secondary-fixed-dim":"#4edea3","surface-tint":"#4cd7f6","error":"#ffb4ab","secondary-container":"#00a572","surface-container-high":"#222a3d","tertiary-container":"#e79400","on-primary":"#003640","inverse-surface":"#dae2fd","surface-variant":"#2d3449","on-secondary":"#003824","surface":"#0b1326","on-surface-variant":"#bcc9cd","inverse-primary":"#00687a","on-primary-fixed-variant":"#004e5c"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-md":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","margin-tablet":"1.5rem","gutter-desktop":"1.5rem","space-xl":"2.5rem","margin-desktop":"2rem","space-sm":"0.5rem","gutter":"1rem","margin":"1rem"},"fontFamily":{"headline-md":["Space Grotesk"],"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"label-lg":["JetBrains Mono"],"label-sm":["JetBrains Mono"],"body-lg":["Geist"],"body-md":["Geist"],"headline-xl-mobile":["Space Grotesk"],"label-md":["JetBrains Mono"],"body-sm":["Geist"]},"fontSize":{"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-lg":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"label-sm":["10px",{"lineHeight":"12px","letterSpacing":"0.05em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-md":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col h-[calc(100vh-130px)]"><div class="h-16 px-space-md flex items-center justify-between shrink-0 bg-surface-container-lowest/50"><div class="flex items-center gap-space-sm"><img alt="VOLTIX Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBxulYrsEt7NA5nz-h0fbLNRemFplfs2oxHioif__2R3HX1GQq-ueWdu7n3dyUJYzJ0pKTlFWLBu9G1_L5S_B-koKiZtjVNQxrP_vqOF4pNZF4jKzMPansyfNYl-OrdZNyDm_InELbx7puuxqFOioXPJatEncVz86hI8nmYf4IjwvkPDRkunPnUBPNV5Jopu9x2icROPPs7pjP4Iu3azGCt_oHwWv-bI2-KkvPujxVCvg"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-primary">VOLTIX</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-primary font-mono">IoT v2.4</span></div><nav class="flex-1 px-space-sm py-space-sm space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-[0_0_12px_rgba(6,182,212,0.25)]"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">grid_view</span><span class="font-body-md text-body-md">Overview</span></div></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-2 rounded-lg transition-colors bg-primary-container text-on-primary-container font-semibold shadow-[0_0_12px_rgba(6,182,212,0.25)]" data-path="live-monitoring" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">pulse_alert</span><span class="font-body-md text-body-md">Live Monitoring</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-secondary/10 text-secondary font-mono animate-pulse">LIVE</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="energy-analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">bar_chart</span><span class="font-body-md text-body-md">Energy Analytics</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="ai-predictions" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">psychology</span><span class="font-body-md text-body-md">AI Predictions</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono">ML</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="device-management" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">memory</span><span class="font-body-md text-body-md">Device Management</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-mono">4</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="alerts-notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">warning</span><span class="font-body-md text-body-md">Alerts & Notifications</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container text-error font-mono">3</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="smart-recommendations" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">lightbulb</span><span class="font-body-md text-body-md">Smart Recommendations</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="reports" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">description</span><span class="font-body-md text-body-md">Reports</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">tune</span><span class="font-body-md text-body-md">Settings</span></div></a></nav></div><div class="p-space-sm shrink-0 bg-surface-container-lowest/80"><div class="p-space-sm rounded-lg bg-surface-container border-0 flex flex-col gap-1.5"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-on-surface font-semibold">ESP32_01</span></div><span class="font-label-sm text-label-sm text-secondary font-mono">ACTIVE</span></div><div class="font-label-sm text-label-sm text-on-surface-variant font-mono leading-tight">230V • 575W • PF 0.95</div><div class="flex items-center justify-between pt-1 mt-1 bg-surface-container-high/40 px-2 py-1 rounded"><div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-sm text-primary">wifi</span><span>-58 dBm</span></div><button class="font-label-sm text-label-sm text-primary hover:text-primary-fixed underline transition-colors" type="button">TOGGLE</button></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="w-full h-full px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md overflow-x-auto py-1"><div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span></span><span class="font-label-sm text-label-sm font-mono text-on-surface font-semibold">ESP32_CLUSTER_01: ONLINE</span></div><div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm font-mono"><span class="material-symbols-outlined text-sm text-secondary">link</span><span>WS://connected (12ms ping)</span></div><div class="hidden xl:flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high font-label-sm text-label-sm text-primary font-mono"><span class="material-symbols-outlined text-sm">bolt</span><span>DEMO: OFF / LIVE HARDWARE</span></div><div class="hidden lg:flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm font-mono"><span class="material-symbols-outlined text-sm text-outline">schedule</span><span>Last sync: 2s ago</span></div></div><div class="flex items-center gap-space-sm shrink-0"><button class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-sm text-label-sm" type="button"><span class="material-symbols-outlined text-sm text-primary">radar</span><span class="hidden sm:inline">Scan Devices</span></button><button class="relative p-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl text-on-surface-variant">notifications</span><span class="absolute top-1 right-1 h-4 w-4 rounded-full bg-error text-on-error flex items-center justify-center font-label-sm text-label-sm font-bold">3</span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfK1VogAJ7fFGdMJH2GrGfCOJTch4yRNgo5MCf8Mwl52NEqb68kCRt-JH2DSK8AQXv3iR8zZh8E1ZlM4lqwlyU1UMu4aep7gQxF0zHsYE16niabVYumY0IiosNFPl8961L3qiYMMJbTKpcTMIz6RU3KKMyXq-97Nw1QMr1jvrUBffdUy2dsfyJlyWysNOQWn5estbK_Hseuw0Do4GLc13VcYA5n9AvsxKua-_PnA5d"/><div class="hidden md:flex flex-col text-left leading-tight"><span class="font-body-sm text-body-sm font-semibold text-on-surface">Eng. Sarah Jenkins</span><span class="font-label-sm text-label-sm text-on-surface-variant">Chief Telemetry Eng</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-space-md lg:px-margin-desktop py-space-md flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full">
+<!-- Top Breadcrumb & Status Ribbon -->
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md bg-surface-container/60 backdrop-blur-xl p-space-md rounded-xl shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-sm sm:gap-space-md">
+<div class="flex items-center gap-2">
+<span class="p-2 rounded bg-primary-container/15 text-primary">
+<span class="material-symbols-outlined text-xl">developer_board</span>
+</span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">Telemetry Node</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-mono flex items-center gap-1">
+<span class="h-1.5 w-1.5 rounded-full bg-secondary animate-ping"></span>
+                ACTIVE
+              </span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">ESP32_01 Incomer Telemetry Matrix</div>
+</div>
+</div>
+</div>
+<!-- Device Switcher & Live Polling Control Bar -->
+<div class="flex flex-wrap items-center gap-2 sm:gap-space-sm w-full lg:w-auto">
+<div class="relative flex-1 sm:flex-initial min-w-[260px]">
+<select class="w-full bg-surface-container-high text-on-surface font-label-md text-label-md rounded px-3 py-2 pr-8 appearance-none focus:outline-none focus:ring-1 focus:ring-primary font-mono" id="deviceSelect">
+<option selected="">ESP32_01 (Main Incomer Meter - PZEM-004T v3.0)</option>
+<option>ESP32_02 (Sub-Panel B: HVAC Chiller Compressor)</option>
+<option>ESP32_03 (Solar PV Array Inverter Feed #1)</option>
+<option>ESP32_04 (Emergency Generator Automatic Transfer Switch)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-sm pointer-events-none text-outline">expand_more</span>
+</div>
+<div class="flex items-center bg-surface-container-lowest p-1 rounded-lg">
+<button class="px-3 py-1.5 rounded font-label-sm text-label-sm font-mono transition-all bg-primary-container text-on-primary-container font-semibold shadow-sm flex items-center gap-1.5" id="streamModeLive" type="button">
+<span class="h-2 w-2 rounded-full bg-on-primary-container animate-pulse"></span>
+            LIVE HARDWARE
+          </button>
+<button class="px-3 py-1.5 rounded font-label-sm text-label-sm font-mono transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1" id="streamModeSim" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+            SIMULATION
+          </button>
+</div>
+<button class="px-3 py-2 rounded bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-sm text-label-sm font-mono flex items-center gap-1.5 transition-colors" id="recalibrateBtn" type="button">
+<span class="material-symbols-outlined text-sm">restart_alt</span>
+<span class="hidden sm:inline">Zero Calibrate</span>
+</button>
+</div>
+</div>
+<!-- Gateway & Physical Hardware Status Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low/90 backdrop-blur-md p-space-md shadow-md">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-16 -bottom-16 w-64 h-64 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md mb-space-md">
+<div class="flex items-center gap-3">
+<div class="relative flex items-center justify-center h-12 w-12 rounded-lg bg-surface-container-highest/60 text-secondary">
+<span class="material-symbols-outlined text-2xl">router</span>
+<span class="absolute -top-1 -right-1 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
+</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">ESP32-WROOM-32D Integrated Micro-Gateway</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm font-mono">Modbus-RTU TTL Bridge</span>
+</div>
+<div class="flex flex-wrap items-center gap-3 text-on-surface-variant font-label-sm text-label-sm font-mono mt-0.5">
+<span>MAC: 24:6F:28:B1:09:A4</span>
+<span>•</span>
+<span class="text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">wifi</span>
+                RSSI -54 dBm (5GHz Ch 36)
+              </span>
+<span>•</span>
+<span>Firmware v2.1.4-build89</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md bg-surface-container-lowest/80 px-space-md py-2.5 rounded-lg font-mono">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">HEARTBEAT TICK</span>
+<div class="flex items-center gap-1.5 text-secondary font-semibold font-label-md text-label-md">
+<span class="h-2 w-2 rounded-full bg-secondary animate-ping"></span>
+<span id="heartbeatCounter">0.3s ago</span>
+</div>
+</div>
+<div class="h-6 w-px bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">TRANSCEIVER LINK</span>
+<span class="font-label-md text-label-md text-on-surface">ws://internal.voltix:8080/pzem</span>
+</div>
+<div class="h-6 w-px bg-surface-container-highest hidden sm:block"></div>
+<div class="flex-col hidden sm:flex">
+<span class="font-label-sm text-label-sm text-outline">SENSOR TEMP</span>
+<span class="font-label-md text-label-md text-primary font-semibold">34.2 °C (Nominal)</span>
+</div>
+</div>
+</div>
+<!-- Transceiver Grid Micro Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-space-sm pt-space-sm border-t border-surface-container-high/40">
+<div class="p-space-sm rounded bg-surface-container/40">
+<span class="font-label-sm text-label-sm text-outline font-mono block">CT CLAMP RATIO</span>
+<span class="font-headline-md text-headline-md font-mono text-on-surface font-semibold">100A / 50mA</span>
+<span class="font-body-sm text-body-sm text-secondary font-mono block mt-0.5">±0.5% Accuracy</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container/40">
+<span class="font-label-sm text-label-sm text-outline font-mono block">POLLING RATE</span>
+<span class="font-headline-md text-headline-md font-mono text-primary font-semibold">1000 ms</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono block mt-0.5">Continuous Async</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container/40">
+<span class="font-label-sm text-label-sm text-outline font-mono block">UART PARITY</span>
+<span class="font-headline-md text-headline-md font-mono text-on-surface font-semibold">9600 8N1</span>
+<span class="font-body-sm text-body-sm text-secondary font-mono block mt-0.5">0 Dropped Frames</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container/40">
+<span class="font-label-sm text-label-sm text-outline font-mono block">FLASH COMMITS</span>
+<span class="font-headline-md text-headline-md font-mono text-on-surface font-semibold">41,208</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono block mt-0.5">EEPROM Level 98%</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container/40">
+<span class="font-label-sm text-label-sm text-outline font-mono block">UPTIME CONTINUOUS</span>
+<span class="font-headline-md text-headline-md font-mono text-on-surface font-semibold">14d 08h 12m</span>
+<span class="font-body-sm text-body-sm text-secondary font-mono block mt-0.5">Watchdog Healthy</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container/40">
+<span class="font-label-sm text-label-sm text-outline font-mono block">CRC CHECKSUM</span>
+<span class="font-headline-md text-headline-md font-mono text-secondary font-semibold">VALID</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono block mt-0.5">0x8F04 Verified</span>
+</div>
+</div>
+</div>
+<!-- Visual Hardware Module Strip with Detailed Hardware Photography Placeholder -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center bg-surface-container-low p-space-md rounded-xl shadow-sm">
+<div class="md:col-span-4 relative rounded-lg overflow-hidden h-44 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Macro close-up photograph of an ESP32 microcontroller development board connected via multi-color jumper wires to a blue PZEM-004T AC multi-function telemetry module with a split-core current transformer clamp, glowing neon cyan and emerald diagnostic LEDs on industrial DIN rail inside a sleek control cabinet, dark cinematic depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrKNuksmtp9mbZBjsafl_FqlNnX4vGl2DlCzuh7WLvk9Yu7_ghplu_-uzigufLMCHLQvdpqGxRcePPOt-l8I5R4faMOVu3dMrEMp8f7-Zcla4467BgXoCDM_-FWFzCYz0x5qrZb0vnRDb5dngYhOjnLH-c6zJ_UofaLO02DwB-SI78-_R-sYM_BZbsEyM3A5BkXY5BlLA_1Gl6LSf2bh4_CaIZKw6cTePtv0ZoJgv3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between font-mono">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest/90 text-primary font-semibold">MODBUS SENSOR BAY 01</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
+            HARDWARE SYNCED
+          </span>
+</div>
+</div>
+<div class="md:col-span-8 flex flex-col justify-between h-full gap-space-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono tracking-wider">Line Load Overview</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Main Utility Incomer Busbar A-1</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-secondary/15 text-secondary font-mono font-medium">Phase 1 Balanced</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-primary/10 text-primary font-mono font-medium">Grid Tied 50Hz</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/80 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline font-mono">THERMAL SINK CT</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-md text-headline-md font-mono text-on-surface font-semibold">31.8°C</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">ΔT +2.4°C</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/80 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline font-mono">TOTAL ACCUMULATED RUN</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-md text-headline-md font-mono text-on-surface font-semibold">344.20 kWh</span>
+<span class="font-label-sm text-label-sm text-primary font-mono">MTD</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/80 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-outline font-mono">PACKET LOSS RATIO</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-md text-headline-md font-mono text-secondary font-semibold">0.002%</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">4 pkts/10k</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 4%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Comprehensive Telemetry Measurement Matrix (8 Metric Cards with Precision Layout) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- 1. Active Power -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-primary">bolt</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">Active Power (P)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono">PZEM Real</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-primary font-bold tracking-tight" id="readoutPower">575.4</span>
+<span class="font-headline-md text-headline-md font-mono text-primary-fixed">W</span>
+</div>
+<!-- Micro sparkline & Min/Max metrics -->
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>Peak: <span class="text-on-surface font-semibold">890.0 W</span></span>
+<span>•</span>
+<span>Min: <span class="text-on-surface font-semibold">320.4 W</span></span>
+<span class="text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">trending_flat</span>
+            ±1.2%
+          </span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-500" id="barPower" style="width: 58%;"></div>
+</div>
+</div>
+<!-- 2. Voltage RMS -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-secondary">electric_meter</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">RMS Voltage (V)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-secondary/10 text-secondary font-mono">True RMS</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-secondary font-bold tracking-tight" id="readoutVoltage">230.1</span>
+<span class="font-headline-md text-headline-md font-mono text-secondary-fixed">V</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>Nominal: <span class="text-on-surface font-semibold">230.0 V</span></span>
+<span>•</span>
+<span>Crest: <span class="text-on-surface font-semibold">1.414</span></span>
+<span class="text-secondary">Nominal</span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-500" id="barVoltage" style="width: 92%;"></div>
+</div>
+</div>
+<!-- 3. Current RMS -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-tertiary">airwave</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">Current (I)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-tertiary/10 text-tertiary font-mono">100A Clamp</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-tertiary font-bold tracking-tight" id="readoutCurrent">2.502</span>
+<span class="font-headline-md text-headline-md font-mono text-tertiary-fixed">A</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>Peak: <span class="text-on-surface font-semibold">3.88 A</span></span>
+<span>•</span>
+<span>Breaker: <span class="text-outline">16.0 A (15.6%)</span></span>
+<span class="text-secondary font-semibold">Normal</span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-tertiary h-full transition-all duration-500" id="barCurrent" style="width: 15.6%;"></div>
+</div>
+</div>
+<!-- 4. Power Factor -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-secondary">speed</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">Power Factor (cos φ)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-secondary/15 text-secondary font-mono">Optimized</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-on-surface font-bold tracking-tight" id="readoutPF">0.95</span>
+<span class="font-headline-md text-headline-md font-mono text-outline">PF</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>Vector: <span class="text-on-surface font-semibold">Lagging</span></span>
+<span>•</span>
+<span>Penalty: <span class="text-secondary font-semibold">0.00%</span></span>
+<span class="text-secondary">Clean Profile</span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-500" id="barPF" style="width: 95%;"></div>
+</div>
+</div>
+<!-- 5. Line Frequency -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-primary">graphic_eq</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">Line Frequency (Hz)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface font-mono">Grid Lock</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-on-surface font-bold tracking-tight" id="readoutFreq">50.02</span>
+<span class="font-headline-md text-headline-md font-mono text-primary">Hz</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>Dev: <span class="text-secondary">+0.04%</span></span>
+<span>•</span>
+<span>Window: <span class="text-on-surface font-semibold">49.8 - 50.2</span></span>
+<span class="text-secondary font-semibold">Stable</span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 50%;"></div>
+</div>
+</div>
+<!-- 6. Accumulated Energy -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-secondary">memory</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">Active Energy (kWh)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-secondary font-mono">NVM Stored</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-on-surface font-bold tracking-tight" id="readoutEnergy">14.852</span>
+<span class="font-headline-md text-headline-md font-mono text-secondary">kWh</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>Since: <span class="text-on-surface">00:00 UTC</span></span>
+<span>•</span>
+<span>Cost est: <span class="text-secondary font-semibold">$2.38</span></span>
+<span class="text-outline">Sync OK</span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 42%;"></div>
+</div>
+</div>
+<!-- 7. Apparent Power -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-primary">all_inclusive</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">Apparent Power (S)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-outline font-mono">Calculated</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-on-surface font-bold tracking-tight" id="readoutApparent">605.6</span>
+<span class="font-headline-md text-headline-md font-mono text-outline">VA</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>V × I Vector: <span class="text-on-surface">575.7 VA</span></span>
+<span>•</span>
+<span class="text-primary font-semibold">Load factor 64%</span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 61%;"></div>
+</div>
+</div>
+<!-- 8. Reactive Power -->
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-lg text-tertiary">swap_driving_apps</span>
+<span class="font-label-sm text-label-sm uppercase font-mono tracking-wider">Reactive Power (Q)</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-tertiary/10 text-tertiary font-mono">Inductive</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl font-mono text-on-surface font-bold tracking-tight" id="readoutReactive">189.2</span>
+<span class="font-headline-md text-headline-md font-mono text-tertiary">VAR</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span>Capacitor Bank: <span class="text-on-surface">OFF</span></span>
+<span>•</span>
+<span class="text-secondary font-semibold">Within spec</span>
+</div>
+<div class="mt-space-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-tertiary h-full" style="width: 28%;"></div>
+</div>
+</div>
+</div>
+<!-- Real-Time Telemetry Waveform / Oscilloscope Panel -->
+<div class="bg-surface-container-low/95 p-space-md rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container-high/60">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">insights</span>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface tracking-tight">Real-Time Waveform & Load Dynamics</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dual-trace telemetry buffer (Active Power [W] & Voltage RMS [V]) sampled via ESP32 WebSocket feed.</p>
+</div>
+<!-- Oscilloscope Controls -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container-highest font-mono font-label-sm text-label-sm text-on-surface">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span>BUFFER: 60s / 1000ms</span>
+</div>
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-mono flex items-center gap-1.5 transition-colors" id="toggleStreamBtn" type="button">
+<span class="material-symbols-outlined text-sm text-primary" id="pausePlayIcon">pause</span>
+<span id="pausePlayText">Pause Buffer</span>
+</button>
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-mono flex items-center gap-1 transition-colors" id="clearBufferBtn" type="button">
+<span class="material-symbols-outlined text-sm text-outline">delete_sweep</span>
+<span>Clear</span>
+</button>
+<button class="px-3 py-1.5 rounded bg-primary-container hover:bg-primary text-on-primary-container font-label-sm text-label-sm font-mono font-semibold flex items-center gap-1 transition-colors" id="downloadJsonBtn" type="button">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Export Raw JSON</span>
+</button>
+</div>
+</div>
+<!-- Scope Screen & Legend -->
+<div class="flex items-center justify-between font-mono font-label-sm text-label-sm px-2">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="h-2 w-4 bg-primary rounded-sm inline-block"></span>
+<span class="text-primary font-semibold">Active Power (300W - 900W scale)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="h-2 w-4 bg-secondary rounded-sm inline-block"></span>
+<span class="text-secondary font-semibold">Voltage RMS (220V - 240V scale)</span>
+</div>
+</div>
+<div class="text-outline hidden sm:block">
+          Grid: 100W / Div • T-Scale: 5s / Div
+        </div>
+</div>
+<!-- Canvas Plotting Area with Industrial Oscilloscope Grid Backdrop -->
+<div class="relative w-full h-72 sm:h-80 bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col justify-between p-3">
+<!-- SVG Grid Lines Background -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-25" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="scopeGrid" patternunits="userSpaceOnUse" width="40">
+<path class="text-outline-variant" d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.75"></path>
+<circle class="text-outline" cx="20" cy="20" fill="currentColor" r="0.75"></circle>
+</pattern>
+</defs>
+<rect fill="url(#scopeGrid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Dynamic Live SVG Waveform Curves -->
+<svg class="absolute inset-0 w-full h-full p-2" id="oscilloscopeSvg" preserveaspectratio="none" viewbox="0 0 800 240">
+<defs>
+<!-- Power Gradient -->
+<lineargradient id="powerGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4cd7f6" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#4cd7f6" stop-opacity="0.0"></stop>
+</lineargradient>
+<!-- Voltage Gradient -->
+<lineargradient id="voltGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4edea3" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#4edea3" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Voltage area + stroke -->
+<polygon fill="url(#voltGrad)" id="voltPolygon" points="0,240 800,240"></polygon>
+<path d="M0,120 L800,120" fill="none" id="voltPath" stroke="#4edea3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Power area + stroke -->
+<polygon fill="url(#powerGrad)" id="powerPolygon" points="0,240 800,240"></polygon>
+<path d="M0,140 L800,140" fill="none" id="powerPath" stroke="#4cd7f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Current Tracking Pin Marker -->
+<circle class="animate-pulse" cx="800" cy="140" fill="#4cd7f6" id="trackPointPower" r="4.5"></circle>
+<circle cx="800" cy="120" fill="#4edea3" id="trackPointVolt" r="4"></circle>
+</svg>
+<!-- Oscilloscope Overlay Annotations -->
+<div class="relative z-10 flex justify-between items-start pointer-events-none">
+<div class="px-2 py-1 rounded bg-surface-container-high/80 backdrop-blur font-mono font-label-sm text-label-sm text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">analytics</span>
+<span>LIVE CH1: P(W) = <span id="ch1Current">575.4 W</span></span>
+</div>
+<div class="px-2 py-1 rounded bg-surface-container-high/80 backdrop-blur font-mono font-label-sm text-label-sm text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">offline_bolt</span>
+<span>LIVE CH2: V(RMS) = <span id="ch2Current">230.1 V</span></span>
+</div>
+</div>
+<div class="relative z-10 flex justify-between items-end pointer-events-none font-mono font-label-sm text-label-sm text-outline">
+<span>-60s T_OFFSET</span>
+<span>-45s</span>
+<span>-30s</span>
+<span>-15s</span>
+<span class="text-secondary font-bold">0s (NOW)</span>
+</div>
+</div>
+</div>
+<!-- Dual Split Section: Live Sensor Measurement Packets Table & Safety Threshold Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- 8-Column: Live Sensor Telemetry Packets Table -->
+<div class="lg:col-span-8 bg-surface-container-low p-space-md rounded-xl shadow-md flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">dataset</span>
+<div>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">Recent Telemetry Frames</span>
+<span class="font-label-sm text-label-sm text-outline font-mono block">FIFO Transceiver Buffer • Last 8 Packets</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-sm text-label-sm font-mono flex items-center gap-1.5 transition-colors self-start sm:self-auto" id="openInspectorBtn" type="button">
+<span class="material-symbols-outlined text-sm">code</span>
+<span>Inspect JSON Payload</span>
+</button>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto mt-space-sm">
+<table class="w-full text-left font-mono">
+<thead>
+<tr class="bg-surface-container text-outline font-label-sm text-label-sm border-b border-surface-container-high/60">
+<th class="py-2.5 px-3">TIMESTAMP</th>
+<th class="py-2.5 px-3">VOLTAGE (V)</th>
+<th class="py-2.5 px-3">CURRENT (A)</th>
+<th class="py-2.5 px-3">POWER (W)</th>
+<th class="py-2.5 px-3">PF</th>
+<th class="py-2.5 px-3">FREQ (Hz)</th>
+<th class="py-2.5 px-3 text-right">STATUS</th>
+</tr>
+</thead>
+<tbody class="font-label-sm text-label-sm divide-y divide-surface-container-high/20" id="telemetryTableBody">
+<!-- Dynamically populated or default fallback rows -->
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:14.210</td>
+<td class="py-2.5 px-3 text-secondary">230.12</td>
+<td class="py-2.5 px-3 text-tertiary">2.502</td>
+<td class="py-2.5 px-3 text-primary font-bold">575.4</td>
+<td class="py-2.5 px-3 text-on-surface">0.95</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.02</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:13.208</td>
+<td class="py-2.5 px-3 text-secondary">230.08</td>
+<td class="py-2.5 px-3 text-tertiary">2.498</td>
+<td class="py-2.5 px-3 text-primary font-bold">574.8</td>
+<td class="py-2.5 px-3 text-on-surface">0.95</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.01</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:12.215</td>
+<td class="py-2.5 px-3 text-secondary">229.95</td>
+<td class="py-2.5 px-3 text-tertiary">2.510</td>
+<td class="py-2.5 px-3 text-primary font-bold">576.2</td>
+<td class="py-2.5 px-3 text-on-surface">0.95</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.00</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:11.201</td>
+<td class="py-2.5 px-3 text-secondary">230.20</td>
+<td class="py-2.5 px-3 text-tertiary">2.505</td>
+<td class="py-2.5 px-3 text-primary font-bold">575.8</td>
+<td class="py-2.5 px-3 text-on-surface">0.94</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.02</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:10.198</td>
+<td class="py-2.5 px-3 text-secondary">230.15</td>
+<td class="py-2.5 px-3 text-tertiary">2.489</td>
+<td class="py-2.5 px-3 text-primary font-bold">572.1</td>
+<td class="py-2.5 px-3 text-on-surface">0.95</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.03</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:09.214</td>
+<td class="py-2.5 px-3 text-secondary">230.10</td>
+<td class="py-2.5 px-3 text-tertiary">2.520</td>
+<td class="py-2.5 px-3 text-primary font-bold">578.9</td>
+<td class="py-2.5 px-3 text-on-surface">0.95</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.01</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:08.203</td>
+<td class="py-2.5 px-3 text-secondary">230.04</td>
+<td class="py-2.5 px-3 text-tertiary">2.515</td>
+<td class="py-2.5 px-3 text-primary font-bold">577.2</td>
+<td class="py-2.5 px-3 text-on-surface">0.95</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.02</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-3 text-on-surface font-semibold">10:30:07.195</td>
+<td class="py-2.5 px-3 text-secondary">229.98</td>
+<td class="py-2.5 px-3 text-tertiary">2.495</td>
+<td class="py-2.5 px-3 text-primary font-bold">573.5</td>
+<td class="py-2.5 px-3 text-on-surface">0.95</td>
+<td class="py-2.5 px-3 text-on-surface-variant">50.00</td>
+<td class="py-2.5 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="pt-space-sm mt-space-sm flex flex-col sm:flex-row items-start sm:items-center justify-between text-outline font-mono font-label-sm text-label-sm gap-2">
+<span>Transport: WebSocket Binary Framing (ws/wss)</span>
+<span class="text-secondary flex items-center gap-1">
+<span class="h-2 w-2 rounded-full bg-secondary"></span>
+            Rx Throughput: 1,024 bytes/sec (Nominal)
+          </span>
+</div>
+</div>
+<!-- 4-Column: Electrical Safety & Protective Thresholds Panel -->
+<div class="lg:col-span-4 bg-surface-container-low p-space-md rounded-xl shadow-md flex flex-col justify-between gap-space-md">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-high/60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">verified_user</span>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">Safety Thresholds</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary/15 text-secondary font-mono">ALL PASS</span>
+</div>
+<!-- Threshold List -->
+<div class="mt-space-md space-y-space-sm">
+<!-- Overvoltage Monitor -->
+<div class="p-space-sm rounded-lg bg-surface-container/60 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-mono">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Overvoltage Cutoff</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary/15 text-secondary">NOMINAL</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono">
+<span>Threshold: 250.0 V</span>
+<span>Current: <strong class="text-on-surface">230.1 V</strong></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 78%;"></div>
+</div>
+</div>
+<!-- Overcurrent Limit -->
+<div class="p-space-sm rounded-lg bg-surface-container/60 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-mono">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Incomer Breaker Limit (16A)</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary/15 text-secondary">15.6% LOAD</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono">
+<span>Trip: 16.00 A</span>
+<span>Active: <strong class="text-tertiary">2.502 A</strong></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 15.6%;"></div>
+</div>
+</div>
+<!-- Power Factor Degradation Rule -->
+<div class="p-space-sm rounded-lg bg-surface-container/60 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-mono">
+<span class="font-body-md text-body-md text-on-surface font-semibold">PF Degradation Alert (<0.85)</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary/15 text-secondary">CLEAR</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono">
+<span>Penalty Line: 0.85 PF</span>
+<span>Operating: <strong class="text-secondary font-semibold">0.95 PF</strong></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+<!-- Sensor Clamp Integrity -->
+<div class="p-space-sm rounded-lg bg-surface-container/60 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-mono">
+<span class="font-body-md text-body-md text-on-surface font-semibold">CT Saturation Warning</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-outline">STABLE</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono">
+<span>Core Flux: 0.28 Tesla</span>
+<span>Limit: 1.60 Tesla</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Relay Manual Trip Simulation Action -->
+<div class="bg-surface-container-lowest/90 p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-xl">gavel</span>
+<div class="font-mono">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold block">Opto-Isolated Trip Relay</span>
+<span class="font-label-sm text-label-sm text-outline">GPIO 26 • Armed</span>
+</div>
+</div>
+<button class="px-2.5 py-1.5 rounded bg-error-container hover:bg-error text-error hover:text-on-error font-label-sm text-label-sm font-mono transition-colors font-semibold" id="tripTestBtn" type="button">
+            TEST INTERRUPT
+          </button>
+</div>
+</div>
+</div>
+<!-- Hardware Sub-Node Status & In-Cabinet Multi-Angle Imagery -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-outline font-mono">ELECTRICAL SWITCHBOARD FEED</span>
+<span class="material-symbols-outlined text-primary text-sm">precision_manufacturing</span>
+</div>
+<div class="h-32 rounded-lg overflow-hidden bg-surface-container-lowest relative">
+<img class="w-full h-full object-cover" data-alt="High quality telephoto photo of an industrial heavy-duty circuit breaker enclosure panel showing neatly routed blue and gray high-amperage cables, digital energy meters with illuminated cyan numerical displays, and labeled wiring channels in a modern server facility power room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd9slv4L0Rc1CTA7vgqVHRCo1RMD_vfkryjlIuTfkVQk0UIjzjyU0Y-eJiVISJwJEDO-cZYv5Bny9qa5QPYJ5TVQSfvsKH8ksgFPiZCtZDUPfWlv9zwtp8xB6JnrG1BssHp8XjF-SEDlLiFqzF1wOEL07jK3uDUW-ibA2RJi-QEbW9p9wh3Ar-gbwX6loyjfF-349fQQgJfRTJvo_Ng_H_pLd_AYf3D88j0OzltmGr"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 font-mono font-label-sm text-label-sm text-on-surface">MAIN FEEDER BUS A</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-outline font-mono">SENSOR OPTICAL ISOLATOR</span>
+<span class="material-symbols-outlined text-secondary text-sm">security</span>
+</div>
+<div class="h-32 rounded-lg overflow-hidden bg-surface-container-lowest relative">
+<img class="w-full h-full object-cover" data-alt="Close up photography of electronic optocoupler chips and galvanic isolation barrier traces on an industrial grade printed circuit board with gold-plated pads, matte black PCB soldermask, and neon status LEDs glowing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-7SeNGz6PSCtcdNneHUNjgIEaMQOqHumi0aW4PPfGs02H9FGx6MQl3_9Ta5lOHcMKyA3Lm8Ctp8pzX4Iw3sEJDysr0_z2FpdDJWt4uh6PSIft-jzpA5S3l0F5PgnIoJvYHeOa8rVoC4oid9TzU0scXQqEmVG3pubF3B7OHuTGCfNY_ECux6cGxmfOalu2BJoSmcyZZwYux46RgK8G6VsdtUzN_UnPI53M0C4zlq4E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 font-mono font-label-sm text-label-sm text-secondary">2.5kV GALVANIC ISOLATION</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-outline font-mono">ANTENNA TELEMETRY SPECTRUM</span>
+<span class="material-symbols-outlined text-tertiary text-sm">rss_feed</span>
+</div>
+<div class="h-32 rounded-lg overflow-hidden bg-surface-container-lowest relative">
+<img class="w-full h-full object-cover" data-alt="Cinematic photo of an external high-gain rubber duck antenna mounted to an industrial metallic NEMA telemetry enclosure, transmitting wireless signals with subtle cyan and electric amber atmospheric backlighting in a darkened factory environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHWjxBrE-5tbkoGW7g90oo5ZFBlN-8OFLNs_L3ncRsAEb20KAdqKekvd0rUmRZFe-J83JYqpDYZAkMQDGHfy7bIQGPKrC6sH0ELMF3FO7rGiCSvpFEUVGhJdlnDloJmJ_H-ftvy3G4_5HJ-c2d7IfgKYk34MiMy3lrzjzg3xjOOFhCCKUT8tDS-PUBBgxvaQS7RDVZWjCRMCfas2wlgfwLkZCYMmsxfUtJ8jV_bFnm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 font-mono font-label-sm text-label-sm text-tertiary">5.8 GHz ULTRA-LOW LATENCY</div>
+</div>
+</div>
+</div>
+</div>
+<!-- JSON Telemetry Inspector Modal Preview (Fixed Overlay) -->
+<div class="fixed inset-0 z-50 bg-background/80 backdrop-blur-md hidden items-center justify-center p-space-md" id="inspectorModal">
+<div class="bg-surface-container-low max-w-2xl w-full rounded-xl shadow-2xl overflow-hidden flex flex-col">
+<div class="p-space-md bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Raw ESP32 Inbound Frame Payload</span>
+</div>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface" id="closeInspectorBtn" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="p-space-md bg-surface-container-lowest overflow-x-auto">
+<pre class="font-mono font-label-sm text-label-sm text-primary leading-relaxed select-all" id="jsonViewer">{
+  "node_id": "ESP32_01",
+  "mac": "24:6F:28:B1:09:A4",
+  "timestamp": "2026-11-10T10:30:14.210Z",
+  "hardware": {
+    "sensor_model": "PZEM-004T-v3.0",
+    "interface": "UART_TTL_MODBUS",
+    "baud": 9600,
+    "temperature_c": 34.2,
+    "rssi_dbm": -54
+  },
+  "telemetry": {
+    "voltage_rms_v": 230.12,
+    "current_rms_a": 2.502,
+    "active_power_w": 575.4,
+    "apparent_power_va": 605.6,
+    "reactive_power_var": 189.2,
+    "power_factor": 0.95,
+    "frequency_hz": 50.02,
+    "energy_accum_kwh": 14.852
+  },
+  "diagnostics": {
+    "watchdog_resets": 0,
+    "crc_error_count": 0,
+    "alarm_overvoltage": false,
+    "alarm_overcurrent": false,
+    "status": "ONLINE"
+  }
+}
+        </pre>
+</div>
+<div class="p-space-md bg-surface-container flex items-center justify-between font-mono font-label-sm text-label-sm">
+<span class="text-outline">Encoding: UTF-8 JSON Stream (Modbus Decoded)</span>
+<button class="px-3 py-1.5 rounded bg-primary-container text-on-primary-container font-semibold flex items-center gap-1" id="copyJsonBtn" type="button">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+<span id="copyBtnText">Copy Payload</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive Telemetry Engine & Live Waveform Generator Script -->
+<script>
+    (function () {
+      // Internal Telemetry State
+      let isStreaming = true;
+      let isSimulation = false;
+      let tick = 0;
+      let lastHeartbeat = 0.3;
+
+      // Base readings
+      let currentTelemetry = {
+        voltage: 230.1,
+        current: 2.502,
+        power: 575.4,
+        pf: 0.95,
+        freq: 50.02,
+        energy: 14.852,
+        apparent: 605.6,
+        reactive: 189.2
+      };
+
+      // Waveform buffer history (60 points)
+      const bufferLength = 60;
+      const powerHistory = Array.from({ length: bufferLength }, () => 575 + (Math.random() * 20 - 10));
+      const voltHistory = Array.from({ length: bufferLength }, () => 230 + (Math.random() * 2 - 1));
+
+      // Elements
+      const readoutPower = document.getElementById('readoutPower');
+      const readoutVoltage = document.getElementById('readoutVoltage');
+      const readoutCurrent = document.getElementById('readoutCurrent');
+      const readoutPF = document.getElementById('readoutPF');
+      const readoutFreq = document.getElementById('readoutFreq');
+      const readoutEnergy = document.getElementById('readoutEnergy');
+      const readoutApparent = document.getElementById('readoutApparent');
+      const readoutReactive = document.getElementById('readoutReactive');
+
+      const barPower = document.getElementById('barPower');
+      const barVoltage = document.getElementById('barVoltage');
+      const barCurrent = document.getElementById('barCurrent');
+      const barPF = document.getElementById('barPF');
+
+      const ch1Current = document.getElementById('ch1Current');
+      const ch2Current = document.getElementById('ch2Current');
+      const heartbeatCounter = document.getElementById('heartbeatCounter');
+
+      const powerPath = document.getElementById('powerPath');
+      const powerPolygon = document.getElementById('powerPolygon');
+      const voltPath = document.getElementById('voltPath');
+      const voltPolygon = document.getElementById('voltPolygon');
+      const trackPointPower = document.getElementById('trackPointPower');
+      const trackPointVolt = document.getElementById('trackPointVolt');
+
+      const toggleStreamBtn = document.getElementById('toggleStreamBtn');
+      const pausePlayIcon = document.getElementById('pausePlayIcon');
+      const pausePlayText = document.getElementById('pausePlayText');
+      const clearBufferBtn = document.getElementById('clearBufferBtn');
+      const downloadJsonBtn = document.getElementById('downloadJsonBtn');
+
+      const streamModeLive = document.getElementById('streamModeLive');
+      const streamModeSim = document.getElementById('streamModeSim');
+      const tableBody = document.getElementById('telemetryTableBody');
+
+      const openInspectorBtn = document.getElementById('openInspectorBtn');
+      const closeInspectorBtn = document.getElementById('closeInspectorBtn');
+      const inspectorModal = document.getElementById('inspectorModal');
+      const copyJsonBtn = document.getElementById('copyJsonBtn');
+      const copyBtnText = document.getElementById('copyBtnText');
+      const jsonViewer = document.getElementById('jsonViewer');
+
+      const tripTestBtn = document.getElementById('tripTestBtn');
+      const recalibrateBtn = document.getElementById('recalibrateBtn');
+
+      // Waveform Scaler Function
+      function renderSvgWaveforms() {
+        const svgWidth = 800;
+        const svgHeight = 240;
+
+        // Power Range: 300W (y=240) to 900W (y=0)
+        const minP = 300;
+        const maxP = 900;
+        const pToY = (val) => {
+          const clamped = Math.max(minP, Math.min(maxP, val));
+          return svgHeight - ((clamped - minP) / (maxP - minP)) * svgHeight;
+        };
+
+        // Voltage Range: 220V (y=240) to 240V (y=0)
+        const minV = 220;
+        const maxV = 240;
+        const vToY = (val) => {
+          const clamped = Math.max(minV, Math.min(maxV, val));
+          return svgHeight - ((clamped - minV) / (maxV - minV)) * svgHeight;
+        };
+
+        const stepX = svgWidth / (bufferLength - 1);
+
+        let pPoints = [];
+        let vPoints = [];
+
+        for (let i = 0; i < bufferLength; i++) {
+          const x = (i * stepX).toFixed(1);
+          const yP = pToY(powerHistory[i]).toFixed(1);
+          const yV = vToY(voltHistory[i]).toFixed(1);
+
+          pPoints.push(`${x},${yP}`);
+          vPoints.push(`${x},${yV}`);
+        }
+
+        const pD = 'M ' + pPoints.join(' L ');
+        powerPath.setAttribute('d', pD);
+        powerPolygon.setAttribute('points', `0,${svgHeight} ` + pPoints.join(' ') + ` ${svgWidth},${svgHeight}`);
+
+        const vD = 'M ' + vPoints.join(' L ');
+        voltPath.setAttribute('d', vD);
+        voltPolygon.setAttribute('points', `0,${svgHeight} ` + vPoints.join(' ') + ` ${svgWidth},${svgHeight}`);
+
+        // Last points tracking
+        const lastP_Y = pToY(powerHistory[powerHistory.length - 1]);
+        const lastV_Y = vToY(voltHistory[voltHistory.length - 1]);
+        trackPointPower.setAttribute('cy', lastP_Y);
+        trackPointVolt.setAttribute('cy', lastV_Y);
+      }
+
+      // Add Table Row
+      function prependTableRow(data) {
+        const now = new Date();
+        const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0');
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-surface-container/60 transition-colors bg-primary/5';
+
+        tr.innerHTML = `
+          <td class="py-2 px-3 text-on-surface font-semibold">${timeStr}</td>
+          <td class="py-2 px-3 text-secondary">${data.voltage.toFixed(2)}</td>
+          <td class="py-2 px-3 text-tertiary">${data.current.toFixed(3)}</td>
+          <td class="py-2 px-3 text-primary font-bold">${data.power.toFixed(1)}</td>
+          <td class="py-2 px-3 text-on-surface">${data.pf.toFixed(2)}</td>
+          <td class="py-2 px-3 text-on-surface-variant">${data.freq.toFixed(2)}</td>
+          <td class="py-2 px-3 text-right"><span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary">VALID</span></td>
+        `;
+
+        tableBody.insertBefore(tr, tableBody.firstChild);
+
+        // Keep at most 8 rows
+        while (tableBody.children.length > 8) {
+          tableBody.removeChild(tableBody.lastChild);
+        }
+
+        // Fade tint removal after brief moment
+        setTimeout(() => {
+          tr.classList.remove('bg-primary/5');
+        }, 400);
+      }
+
+      // Stream loop timer (1000ms tick)
+      setInterval(() => {
+        if (!isStreaming) return;
+
+        tick++;
+        lastHeartbeat = (Math.random() * 0.4 + 0.1).toFixed(1);
+        heartbeatCounter.textContent = `${lastHeartbeat}s ago`;
+
+        // Fluctuation generator
+        const pNoise = (Math.random() - 0.49) * (isSimulation ? 35 : 12);
+        const vNoise = (Math.random() - 0.49) * 0.4;
+        const iNoise = (Math.random() - 0.49) * 0.04;
+
+        currentTelemetry.voltage = +(230.1 + vNoise).toFixed(2);
+        currentTelemetry.current = +(2.502 + iNoise).toFixed(3);
+        currentTelemetry.power = +(currentTelemetry.voltage * currentTelemetry.current * currentTelemetry.pf + pNoise).toFixed(1);
+        currentTelemetry.apparent = +(currentTelemetry.voltage * currentTelemetry.current).toFixed(1);
+        currentTelemetry.reactive = +(Math.sqrt(Math.max(0, Math.pow(currentTelemetry.apparent, 2) - Math.pow(currentTelemetry.power, 2)))).toFixed(1);
+        currentTelemetry.freq = +(50.0 + (Math.random() * 0.05 - 0.02)).toFixed(2);
+        currentTelemetry.energy = +(currentTelemetry.energy + (currentTelemetry.power / 3600000)).toFixed(4);
+
+        // UI numeric updates
+        readoutPower.textContent = currentTelemetry.power.toFixed(1);
+        readoutVoltage.textContent = currentTelemetry.voltage.toFixed(1);
+        readoutCurrent.textContent = currentTelemetry.current.toFixed(3);
+        readoutPF.textContent = currentTelemetry.pf.toFixed(2);
+        readoutFreq.textContent = currentTelemetry.freq.toFixed(2);
+        readoutEnergy.textContent = currentTelemetry.energy.toFixed(3);
+        readoutApparent.textContent = currentTelemetry.apparent.toFixed(1);
+        readoutReactive.textContent = currentTelemetry.reactive.toFixed(1);
+
+        ch1Current.textContent = `${currentTelemetry.power.toFixed(1)} W`;
+        ch2Current.textContent = `${currentTelemetry.voltage.toFixed(1)} V`;
+
+        // Update progress bars
+        barPower.style.width = Math.min(100, Math.max(10, (currentTelemetry.power / 900) * 100)) + '%';
+        barVoltage.style.width = Math.min(100, Math.max(10, ((currentTelemetry.voltage - 200) / 50) * 100)) + '%';
+        barCurrent.style.width = Math.min(100, Math.max(5, (currentTelemetry.current / 16) * 100)) + '%';
+
+        // Update Waveform History
+        powerHistory.shift();
+        powerHistory.push(currentTelemetry.power);
+
+        voltHistory.shift();
+        voltHistory.push(currentTelemetry.voltage);
+
+        renderSvgWaveforms();
+        prependTableRow(currentTelemetry);
+
+      }, 1000);
+
+      // Pause / Play Button
+      toggleStreamBtn.addEventListener('click', () => {
+        isStreaming = !isStreaming;
+        if (isStreaming) {
+          pausePlayIcon.textContent = 'pause';
+          pausePlayText.textContent = 'Pause Buffer';
+        } else {
+          pausePlayIcon.textContent = 'play_arrow';
+          pausePlayText.textContent = 'Resume Stream';
+        }
+      });
+
+      // Clear Buffer
+      clearBufferBtn.addEventListener('click', () => {
+        for (let i = 0; i < bufferLength; i++) {
+          powerHistory[i] = 575;
+          voltHistory[i] = 230;
+        }
+        renderSvgWaveforms();
+      });
+
+      // Export Raw JSON
+      downloadJsonBtn.addEventListener('click', () => {
+        const payload = {
+          node_id: "ESP32_01",
+          device_type: "PZEM-004T-v3.0",
+          timestamp: new Date().toISOString(),
+          telemetry: currentTelemetry,
+          buffer_history: {
+            power_watts: powerHistory,
+            voltage_rms: voltHistory
+          }
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ESP32_01_telemetry_${Date.now()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // Toggle Simulation / Hardware
+      streamModeLive.addEventListener('click', () => {
+        isSimulation = false;
+        streamModeLive.className = "px-3 py-1.5 rounded font-label-sm text-label-sm font-mono transition-all bg-primary-container text-on-primary-container font-semibold shadow-sm flex items-center gap-1.5";
+        streamModeSim.className = "px-3 py-1.5 rounded font-label-sm text-label-sm font-mono transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1";
+      });
+
+      streamModeSim.addEventListener('click', () => {
+        isSimulation = true;
+        streamModeSim.className = "px-3 py-1.5 rounded font-label-sm text-label-sm font-mono transition-all bg-tertiary-container text-on-tertiary-container font-semibold shadow-sm flex items-center gap-1";
+        streamModeLive.className = "px-3 py-1.5 rounded font-label-sm text-label-sm font-mono transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-1.5";
+      });
+
+      // Inspector Modal Handlers
+      openInspectorBtn.addEventListener('click', () => {
+        inspectorModal.classList.remove('hidden');
+        inspectorModal.classList.add('flex');
+      });
+
+      closeInspectorBtn.addEventListener('click', () => {
+        inspectorModal.classList.add('hidden');
+        inspectorModal.classList.remove('flex');
+      });
+
+      inspectorModal.addEventListener('click', (e) => {
+        if (e.target === inspectorModal) {
+          inspectorModal.classList.add('hidden');
+          inspectorModal.classList.remove('flex');
+        }
+      });
+
+      copyJsonBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(jsonViewer.innerText).then(() => {
+          copyBtnText.textContent = "Copied!";
+          setTimeout(() => { copyBtnText.textContent = "Copy Payload"; }, 2000);
+        });
+      });
+
+      // Zero Calibrate Button interaction
+      recalibrateBtn.addEventListener('click', () => {
+        recalibrateBtn.classList.add('opacity-50', 'pointer-events-none');
+        recalibrateBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">refresh</span> Calibrating CT...';
+        setTimeout(() => {
+          recalibrateBtn.classList.remove('opacity-50', 'pointer-events-none');
+          recalibrateBtn.innerHTML = '<span class="material-symbols-outlined text-sm text-secondary">check</span> Zeroed';
+          setTimeout(() => {
+            recalibrateBtn.innerHTML = '<span class="material-symbols-outlined text-sm">restart_alt</span><span class="hidden sm:inline">Zero Calibrate</span>';
+          }, 2000);
+        }, 1200);
+      });
+
+      // Trip Test Safety Trigger Confirmation
+      tripTestBtn.addEventListener('click', () => {
+        if (confirm("ARMED INTERRUPT: Execute simulated 16A fast-trip signal to Opto-Relay GPIO 26?")) {
+          alert("SIMULATED TRIP COMMAND SENT. Incomer breaker remains in closed safety hold state during live monitor mode.");
+        }
+      });
+
+      // Initial SVG render
+      renderSvgWaveforms();
+    })();
+  </script>
+</div></main></div></body></html>

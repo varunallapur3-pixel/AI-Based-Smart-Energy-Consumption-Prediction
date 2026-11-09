@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"primary":"#4cd7f6","outline":"#869397","on-surface":"#dae2fd","on-error-container":"#ffdad6","secondary-fixed":"#6ffbbe","on-tertiary-fixed-variant":"#653e00","surface-container-low":"#131b2e","on-primary-container":"#00424f","on-tertiary-fixed":"#2a1700","tertiary":"#ffb95f","outline-variant":"#3d494c","on-tertiary":"#472a00","on-background":"#dae2fd","inverse-on-surface":"#283044","background":"#0b1326","primary-fixed":"#acedff","secondary":"#4edea3","on-error":"#690005","tertiary-fixed":"#ffddb8","on-primary-fixed":"#001f26","primary-fixed-dim":"#4cd7f6","tertiary-fixed-dim":"#ffb95f","surface-dim":"#0b1326","on-secondary-fixed":"#002113","surface-container":"#171f33","on-secondary-container":"#00311f","error-container":"#93000a","primary-container":"#06b6d4","surface-container-highest":"#2d3449","surface-container-lowest":"#060e20","surface-bright":"#31394d","on-tertiary-container":"#563400","on-secondary-fixed-variant":"#005236","secondary-fixed-dim":"#4edea3","surface-tint":"#4cd7f6","error":"#ffb4ab","secondary-container":"#00a572","surface-container-high":"#222a3d","tertiary-container":"#e79400","on-primary":"#003640","inverse-surface":"#dae2fd","surface-variant":"#2d3449","on-secondary":"#003824","surface":"#0b1326","on-surface-variant":"#bcc9cd","inverse-primary":"#00687a","on-primary-fixed-variant":"#004e5c"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-md":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","margin-tablet":"1.5rem","gutter-desktop":"1.5rem","space-xl":"2.5rem","margin-desktop":"2rem","space-sm":"0.5rem","gutter":"1rem","margin":"1rem"},"fontFamily":{"headline-md":["Space Grotesk"],"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"label-lg":["JetBrains Mono"],"label-sm":["JetBrains Mono"],"body-lg":["Geist"],"body-md":["Geist"],"headline-xl-mobile":["Space Grotesk"],"label-md":["JetBrains Mono"],"body-sm":["Geist"]},"fontSize":{"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-lg":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"label-sm":["10px",{"lineHeight":"12px","letterSpacing":"0.05em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-md":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col h-[calc(100vh-130px)]"><div class="h-16 px-space-md flex items-center justify-between shrink-0 bg-surface-container-lowest/50"><div class="flex items-center gap-space-sm"><img alt="VOLTIX Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBxulYrsEt7NA5nz-h0fbLNRemFplfs2oxHioif__2R3HX1GQq-ueWdu7n3dyUJYzJ0pKTlFWLBu9G1_L5S_B-koKiZtjVNQxrP_vqOF4pNZF4jKzMPansyfNYl-OrdZNyDm_InELbx7puuxqFOioXPJatEncVz86hI8nmYf4IjwvkPDRkunPnUBPNV5Jopu9x2icROPPs7pjP4Iu3azGCt_oHwWv-bI2-KkvPujxVCvg"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-primary">VOLTIX</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-high text-primary font-mono">IoT v2.4</span></div><nav class="flex-1 px-space-sm py-space-sm space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-[0_0_12px_rgba(6,182,212,0.25)]"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">grid_view</span><span class="font-body-md text-body-md">Overview</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="live-monitoring" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">pulse_alert</span><span class="font-body-md text-body-md">Live Monitoring</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-secondary/10 text-secondary font-mono animate-pulse">LIVE</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="energy-analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">bar_chart</span><span class="font-body-md text-body-md">Energy Analytics</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="ai-predictions" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">psychology</span><span class="font-body-md text-body-md">AI Predictions</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono">ML</span></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-2 rounded-lg transition-colors bg-primary-container text-on-primary-container font-semibold shadow-[0_0_12px_rgba(6,182,212,0.25)]" data-path="device-management" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">memory</span><span class="font-body-md text-body-md">Device Management</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-mono">4</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="alerts-notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">warning</span><span class="font-body-md text-body-md">Alerts & Notifications</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error-container text-error font-mono">3</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="smart-recommendations" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">lightbulb</span><span class="font-body-md text-body-md">Smart Recommendations</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="reports" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">description</span><span class="font-body-md text-body-md">Reports</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-xl">tune</span><span class="font-body-md text-body-md">Settings</span></div></a></nav></div><div class="p-space-sm shrink-0 bg-surface-container-lowest/80"><div class="p-space-sm rounded-lg bg-surface-container border-0 flex flex-col gap-1.5"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-on-surface font-semibold">ESP32_01</span></div><span class="font-label-sm text-label-sm text-secondary font-mono">ACTIVE</span></div><div class="font-label-sm text-label-sm text-on-surface-variant font-mono leading-tight">230V • 575W • PF 0.95</div><div class="flex items-center justify-between pt-1 mt-1 bg-surface-container-high/40 px-2 py-1 rounded"><div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-sm text-primary">wifi</span><span>-58 dBm</span></div><button class="font-label-sm text-label-sm text-primary hover:text-primary-fixed underline transition-colors" type="button">TOGGLE</button></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="w-full h-full px-space-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md overflow-x-auto py-1"><div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span></span><span class="font-label-sm text-label-sm font-mono text-on-surface font-semibold">ESP32_CLUSTER_01: ONLINE</span></div><div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm font-mono"><span class="material-symbols-outlined text-sm text-secondary">link</span><span>WS://connected (12ms ping)</span></div><div class="hidden xl:flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high font-label-sm text-label-sm text-primary font-mono"><span class="material-symbols-outlined text-sm">bolt</span><span>DEMO: OFF / LIVE HARDWARE</span></div><div class="hidden lg:flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm font-mono"><span class="material-symbols-outlined text-sm text-outline">schedule</span><span>Last sync: 2s ago</span></div></div><div class="flex items-center gap-space-sm shrink-0"><button class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors font-label-sm text-label-sm" type="button"><span class="material-symbols-outlined text-sm text-primary">radar</span><span class="hidden sm:inline">Scan Devices</span></button><button class="relative p-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl text-on-surface-variant">notifications</span><span class="absolute top-1 right-1 h-4 w-4 rounded-full bg-error text-on-error flex items-center justify-center font-label-sm text-label-sm font-bold">3</span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfK1VogAJ7fFGdMJH2GrGfCOJTch4yRNgo5MCf8Mwl52NEqb68kCRt-JH2DSK8AQXv3iR8zZh8E1ZlM4lqwlyU1UMu4aep7gQxF0zHsYE16niabVYumY0IiosNFPl8961L3qiYMMJbTKpcTMIz6RU3KKMyXq-97Nw1QMr1jvrUBffdUy2dsfyJlyWysNOQWn5estbK_Hseuw0Do4GLc13VcYA5n9AvsxKua-_PnA5d"/><div class="hidden md:flex flex-col text-left leading-tight"><span class="font-body-sm text-body-sm font-semibold text-on-surface">Eng. Sarah Jenkins</span><span class="font-label-sm text-label-sm text-on-surface-variant">Chief Telemetry Eng</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Content Canvas Area -->
+<div class="p-margin-desktop space-y-space-lg">
+<!-- Top Fleet Breadcrumbs & Quick Telemetry Metrics -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-mono">TELEMETRY GATEWAY // FLEET CONTROL</span>
+<span class="text-outline-variant font-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">ZONE_EAST_FEEDER_04</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-semibold tracking-tight text-on-surface">IoT Node Fleet & Gateway Management</h1>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-colors font-label-sm text-label-sm font-mono shadow-sm" id="btn-export-fleet" type="button">
+<span class="material-symbols-outlined text-sm text-primary">download</span>
+<span>EXPORT MANIFEST</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-colors font-label-sm text-label-sm font-mono shadow-sm" id="btn-trigger-scan" type="button">
+<span class="material-symbols-outlined text-sm text-secondary animate-pulse">radar</span>
+<span>DISCOVER LAN SUBNET</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-fixed text-on-primary font-label-sm text-label-sm font-semibold transition-all shadow-[0_0_16px_rgba(76,215,246,0.3)]" id="btn-open-register" type="button">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+<span>+ REGISTER DEVICE</span>
+</button>
+</div>
+</div>
+<!-- Status Ticker & Metric Strip -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm font-mono uppercase text-on-surface-variant">TOTAL PROVISIONED</div>
+<div class="font-headline-lg text-headline-lg font-semibold text-on-surface mt-1">4 <span class="font-label-sm text-label-sm font-normal text-outline">NODES</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">memory</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm font-mono uppercase text-secondary">ACTIVE TELEMETRY</div>
+<div class="font-headline-lg text-headline-lg font-semibold text-secondary mt-1">3 <span class="font-label-sm text-label-sm font-normal text-secondary-container">ONLINE</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl">sensors</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm font-mono uppercase text-tertiary">STANDBY / DEMO</div>
+<div class="font-headline-lg text-headline-lg font-semibold text-tertiary mt-1">1 <span class="font-label-sm text-label-sm font-normal text-tertiary-container">EMULATED</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-2xl">schema</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm font-mono uppercase text-on-surface-variant">FAULT COND.</div>
+<div class="font-headline-lg text-headline-lg font-semibold text-on-surface mt-1">0 <span class="font-label-sm text-label-sm font-normal text-outline">NOMINAL</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+</div>
+</div>
+<!-- Backend-Assisted Discovery Notification Banner -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-md flex flex-col md:flex-row md:items-center justify-between gap-space-md relative overflow-hidden" id="discovery-banner">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-md z-10">
+<div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl">wifi_find</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm font-mono font-semibold text-primary uppercase">Active mDNS Broadcast Probe</span>
+<span class="h-1.5 w-1.5 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">192.168.1.0/24 subnet</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">
+            Network Discovery sweeps active ESP32 UDP advertising beacons. Ensure remote power monitoring nodes run VOLTIX firmware with active SoftAP or client Wi-Fi link.
+          </p>
+</div>
+</div>
+<!-- Live Discovery Prompt Badge -->
+<div class="z-10 flex items-center gap-space-sm bg-surface-container p-2 rounded-lg shrink-0">
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-secondary font-mono font-semibold">1 UNCLAIMED NODE</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">192.168.1.142 [ESP32-S3]</span>
+</div>
+<button class="px-3 py-1.5 bg-secondary-container hover:bg-secondary text-on-secondary rounded font-label-sm text-label-sm font-semibold transition-all flex items-center gap-1 shadow-sm" id="btn-claim-node" type="button">
+<span>Claim Node</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Main Grid: Fleet Table + Registration Drawer / Health Sidebar -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Fleet Table (8 or 12 cols depending on drawer) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<!-- Table Card Container -->
+<div class="rounded-xl bg-surface-container-low shadow-md overflow-hidden">
+<div class="p-space-md bg-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">lan</span>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Registered Physical Nodes</h2>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-mono">4 NODES</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<input class="w-56 bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-label-sm text-label-sm px-3 py-1.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="filter-input" placeholder="Filter by ID, phase, location..." type="text"/>
+<span class="material-symbols-outlined absolute right-2.5 top-1.5 text-sm text-outline">search</span>
+</div>
+<button class="p-1.5 bg-surface-container-high hover:bg-surface-bright rounded-lg text-on-surface-variant hover:text-on-surface transition-colors" id="btn-refresh-grid" title="Force Telemetry Sync">
+<span class="material-symbols-outlined text-lg">sync</span>
+</button>
+</div>
+</div>
+<!-- Inventory Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead class="bg-surface-container-lowest/60 text-outline uppercase font-label-sm text-label-sm font-mono tracking-wider">
+<tr>
+<th class="py-3 px-space-md" scope="col">Node / Identifier</th>
+<th class="py-3 px-space-md" scope="col">Hardware & Sensor</th>
+<th class="py-3 px-space-md" scope="col">Location</th>
+<th class="py-3 px-space-md" scope="col">Status</th>
+<th class="py-3 px-space-md" scope="col">Telemetry Load</th>
+<th class="py-3 px-space-md" scope="col">RF Signal</th>
+<th class="py-3 px-space-md text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest/20 font-body-sm text-body-sm" id="device-table-rows">
+<!-- Node 01 -->
+<tr class="hover:bg-surface-container/50 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Main Incomer 3-Phase</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-mono">PH-A/B/C</span>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-outline">MAC: A4:CF:12:88:51:02 • ESP32_01</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-on-surface">ESP32-WROOM-32D</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">PZEM-004T v3.0 UART</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface">Main Dist. Panel A</div>
+<div class="text-outline font-label-sm text-label-sm">Substation Basement</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-mono">
+<span class="h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+<span>ONLINE</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-primary font-semibold">575.2 W</div>
+<div class="text-outline font-label-sm text-label-sm">230.1 V • 2.50 A • PF 0.96</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 font-mono font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">wifi</span>
+<span>-54 dBm</span>
+</div>
+<div class="w-14 bg-surface-container-high rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-secondary h-1 rounded-full" style="width: 82%"></div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1 rounded hover:bg-surface-container-highest text-primary" onclick="inspectNode('ESP32_01', 'Main Incomer 3-Phase')" title="Telemetry Stream">
+<span class="material-symbols-outlined text-base">monitoring</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface" onclick="calibrateSensor('ESP32_01')" title="Calibrate CT Zero">
+<span class="material-symbols-outlined text-base">tune</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-warning" onclick="rebootNode('ESP32_01')" title="Reboot MCU">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-error" onclick="deregisterNode('ESP32_01')" title="Deregister">
+<span class="material-symbols-outlined text-base">delete_outline</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Node 02 -->
+<tr class="hover:bg-surface-container/50 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Lab Server Circuit</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-mono">PH-B</span>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-outline">MAC: CC:50:E3:19:42:0B • ESP32_02</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-on-surface">ESP32-S3 Dual-Core</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">ADS1115 + 100A CT Clamp</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface">Server Room Rack 04</div>
+<div class="text-outline font-label-sm text-label-sm">IT Facilities B2</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-mono">
+<span class="h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+<span>ONLINE</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-primary font-semibold">940.8 W</div>
+<div class="text-outline font-label-sm text-label-sm">229.4 V • 4.10 A • PF 0.98</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 font-mono font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">wifi</span>
+<span>-62 dBm</span>
+</div>
+<div class="w-14 bg-surface-container-high rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-secondary h-1 rounded-full" style="width: 71%"></div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1 rounded hover:bg-surface-container-highest text-primary" onclick="inspectNode('ESP32_02', 'Lab Server Circuit')" title="Telemetry Stream">
+<span class="material-symbols-outlined text-base">monitoring</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface" onclick="calibrateSensor('ESP32_02')" title="Calibrate CT Zero">
+<span class="material-symbols-outlined text-base">tune</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-warning" onclick="rebootNode('ESP32_02')" title="Reboot MCU">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-error" onclick="deregisterNode('ESP32_02')" title="Deregister">
+<span class="material-symbols-outlined text-base">delete_outline</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Node 03 -->
+<tr class="hover:bg-surface-container/50 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">HVAC Inverter Unit</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-mono">PH-C</span>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-outline">MAC: A0:B7:65:21:09:88 • ESP32_03</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-on-surface">ESP32-WROOM-32U (Ext Ant)</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Modbus RTU RS-485</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface">Rooftop Plant Room</div>
+<div class="text-outline font-label-sm text-label-sm">Chiller Bay Roof N</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-mono">
+<span class="h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+<span>ONLINE</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-primary font-semibold">1,220.5 W</div>
+<div class="text-outline font-label-sm text-label-sm">232.0 V • 5.34 A • PF 0.94</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 font-mono font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-sm text-tertiary">wifi</span>
+<span>-78 dBm</span>
+</div>
+<div class="w-14 bg-surface-container-high rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-tertiary h-1 rounded-full" style="width: 44%"></div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1 rounded hover:bg-surface-container-highest text-primary" onclick="inspectNode('ESP32_03', 'HVAC Inverter Unit')" title="Telemetry Stream">
+<span class="material-symbols-outlined text-base">monitoring</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface" onclick="calibrateSensor('ESP32_03')" title="Calibrate CT Zero">
+<span class="material-symbols-outlined text-base">tune</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-warning" onclick="rebootNode('ESP32_03')" title="Reboot MCU">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-error" onclick="deregisterNode('ESP32_03')" title="Deregister">
+<span class="material-symbols-outlined text-base">delete_outline</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Node 04 (Demo/Standby) -->
+<tr class="hover:bg-surface-container/50 transition-colors group">
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Solar Battery Tie</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary/10 text-tertiary font-label-sm text-label-sm font-mono">STANDBY</span>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-outline">MAC: VIRT:SIM:04:88:00 • ESP32_04</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-on-surface">Simulated Core Node</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Virtual ADE7758 SPI</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface">BMS Energy Bay</div>
+<div class="text-outline font-label-sm text-label-sm">Solar Storage Enclosure</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-label-sm text-label-sm font-mono">
+<span class="h-2 w-2 rounded-full bg-tertiary"></span>
+<span>DEMO SIM</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono">
+<div class="text-on-surface-variant font-semibold">0.0 W (Idle)</div>
+<div class="text-outline font-label-sm text-label-sm">Standby Battery Reserve</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 font-mono font-label-sm text-label-sm text-outline">
+<span class="material-symbols-outlined text-sm">cloud_sync</span>
+<span>Loopback</span>
+</div>
+<div class="w-14 bg-surface-container-high rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-outline h-1 rounded-full" style="width: 100%"></div>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1 rounded hover:bg-surface-container-highest text-primary" onclick="inspectNode('ESP32_04', 'Solar Battery Tie')" title="Telemetry Stream">
+<span class="material-symbols-outlined text-base">monitoring</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface" onclick="calibrateSensor('ESP32_04')" title="Calibrate CT Zero">
+<span class="material-symbols-outlined text-base">tune</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-warning" onclick="rebootNode('ESP32_04')" title="Reboot MCU">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-error" onclick="deregisterNode('ESP32_04')" title="Deregister">
+<span class="material-symbols-outlined text-base">delete_outline</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Metrics & Firmware Status -->
+<div class="p-space-sm bg-surface-container-lowest/80 px-space-md flex flex-wrap items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono">
+<div class="flex items-center gap-4">
+<span>Firmware baseline: <strong class="text-on-surface">v2.1.4_STABLE</strong></span>
+<span class="hidden sm:inline">•</span>
+<span class="hidden sm:inline">Telemetry frequency: <strong class="text-primary">1000ms / Node</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-secondary">verified_user</span>
+<span>All 4 nodes cryptographic HMAC signed</span>
+</div>
+</div>
+</div>
+<!-- Connection Diagnostics & Sensor Health History Panel -->
+<div class="rounded-xl bg-surface-container-low shadow-md p-space-md space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">network_check</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Subnet Diagnostics & Latency Logs</h3>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-outline">Real-time WebSocket & MQTT QOS</span>
+</div>
+<!-- Diagnostic Metrics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="bg-surface-container p-3 rounded-lg flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm font-mono text-outline">MQTT BROKER RTT</div>
+<div class="font-headline-md text-headline-md text-primary font-mono mt-0.5">14.2 ms</div>
+</div>
+<span class="material-symbols-outlined text-primary text-2xl">speed</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm font-mono text-outline">PACKET LOSS (24H)</div>
+<div class="font-headline-md text-headline-md text-secondary font-mono mt-0.5">0.018 %</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-2xl">check_circle</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm font-mono text-outline">HEARTBEAT DROP TIMEOUTS</div>
+<div class="font-headline-md text-headline-md text-on-surface font-mono mt-0.5">0 DROPS</div>
+</div>
+<span class="material-symbols-outlined text-outline text-2xl">signal_cellular_alt</span>
+</div>
+</div>
+<!-- Console-Style Event Timeline -->
+<div class="bg-surface-container-lowest p-space-sm rounded-lg font-mono font-label-sm text-label-sm space-y-1.5 overflow-x-auto max-h-44">
+<div class="text-on-surface-variant flex items-center gap-2">
+<span class="text-outline">[14:32:01.218]</span>
+<span class="text-secondary font-semibold">ACK</span>
+<span>ESP32_01 ping response received: 12ms (ADC calibration matrix nominal)</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-2">
+<span class="text-outline">[14:31:55.004]</span>
+<span class="text-primary font-semibold">SYNC</span>
+<span>Subnet mDNS broadcast completed on 192.168.1.255: discovered unprovisioned MAC 3C:61:05:44:9A:12</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-2">
+<span class="text-outline">[14:30:12.784]</span>
+<span class="text-tertiary font-semibold">WARN</span>
+<span>ESP32_03 RF RSSI dropped to -78 dBm. Channel 6 noise floor elevated.</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-2">
+<span class="text-outline">[14:28:44.110]</span>
+<span class="text-secondary font-semibold">INFO</span>
+<span>PZEM-004T checksum valid: Total energy counter accumulated 342.1 kWh.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Registration Form / Hardware Configuration Sidebar -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Interactive Registration Card -->
+<div class="rounded-xl bg-surface-container-low shadow-md p-space-md space-y-space-md relative overflow-hidden" id="registration-panel">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">add_to_queue</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Provision Node</h2>
+</div>
+<span class="font-label-sm text-label-sm font-mono px-2 py-0.5 rounded bg-surface-container-high text-primary">STEP 1/2</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Register hardware parameters to generate the cryptographic provisioning header file (<code class="text-primary">config.h</code>).
+          </p>
+<form class="space-y-space-sm" id="device-register-form" onsubmit="event.preventDefault(); handleDeviceRegister();">
+<!-- Friendly Name -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm font-mono text-outline uppercase" for="input-friendly-name">Device Friendly Name</label>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="input-friendly-name" placeholder="e.g. Workshop Air Compressor" required="" type="text"/>
+</div>
+<!-- Hardware Device Identifier -->
+<div class="space-y-1">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm font-mono text-outline uppercase" for="input-hw-id">Hardware Node Identifier</label>
+<button class="font-label-sm text-label-sm text-primary hover:underline font-mono" onclick="autoGenerateHwId()" type="button">Auto-Generate</button>
+</div>
+<input class="w-full bg-surface-container-lowest text-on-surface font-mono font-label-md text-label-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="input-hw-id" required="" type="text" value="ESP32_05_E465"/>
+</div>
+<!-- Sensor Interface Type -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm font-mono text-outline uppercase" for="select-sensor-type">Sensor Transducer Interface</label>
+<select class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="select-sensor-type">
+<option value="pzem">PZEM-004T v3.0 (AC Voltage, Current, Active Power, Energy)</option>
+<option value="ct-ads1115">Non-invasive Split-Core CT Clamp + ADS1115 I2C</option>
+<option value="modbus-rs485">Modbus RTU RS485 Industrial Energy Meter</option>
+<option value="ade7758">Analog Devices ADE7758 Polyphase Energy IC</option>
+</select>
+</div>
+<!-- Phase & Location -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm font-mono text-outline uppercase" for="select-phase">Phase Assignment</label>
+<select class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="select-phase">
+<option value="PH-A">Phase A (Red)</option>
+<option value="PH-B">Phase B (Yellow)</option>
+<option value="PH-C">Phase C (Blue)</option>
+<option value="PH-3P">3-Phase Balanced</option>
+<option value="PH-1P">Single Phase 230V</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm font-mono text-outline uppercase" for="input-location-tag">Facility Location</label>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="input-location-tag" placeholder="e.g. Bay 2 Breaker #8" type="text"/>
+</div>
+</div>
+<!-- API Security Key / HMAC Token -->
+<div class="space-y-1 pt-1">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm font-mono text-outline uppercase" for="input-security-token">Security Token / Node Secret</label>
+<button class="font-label-sm text-label-sm text-primary hover:underline font-mono" onclick="generateSecretKey()" type="button">Regenerate</button>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest text-on-surface-variant font-mono font-label-sm text-label-sm px-3 py-2 rounded-lg shadow-inner" id="input-security-token" readonly="" type="text" value="vtx_sec_4f92d8e091b64cb1a2e8"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-sm text-outline">key</span>
+</div>
+</div>
+<!-- Heartbeat Timeout Slider -->
+<div class="space-y-1 pt-1">
+<div class="flex justify-between items-center font-label-sm text-label-sm font-mono">
+<span class="text-outline uppercase">Heartbeat Timeout</span>
+<span class="text-primary font-semibold" id="slider-timeout-val">30s</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-high rounded-lg cursor-pointer" id="slider-timeout" max="120" min="10" oninput="document.getElementById('slider-timeout-val').textContent = this.value + 's'" step="5" type="range" value="30"/>
+<div class="flex justify-between text-outline font-label-sm text-label-sm font-mono">
+<span>10s (Fast)</span>
+<span>120s (Low Power)</span>
+</div>
+</div>
+<!-- Fallback Behavior Toggle -->
+<div class="p-3 bg-surface-container rounded-lg flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="font-label-sm text-label-sm font-semibold text-on-surface">Auto-Fallback to Demo</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Synthesize realistic noise load if node disconnects</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary after:border-gray-300 after:border-0 after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Submit Button -->
+<div class="pt-2">
+<button class="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-fixed text-on-primary font-headline-md text-headline-md font-semibold text-center transition-all shadow-[0_0_16px_rgba(76,215,246,0.25)] flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-lg">memory</span>
+<span>Commit & Download Firmware Header</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Node Telemetry Inspector Drawer (Interactive Preview) -->
+<div class="rounded-xl bg-surface-container-low shadow-md p-space-md space-y-space-sm" id="node-inspector">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">pulse_alert</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface" id="inspector-title">Live Probe: ESP32_01</h3>
+</div>
+<span class="font-label-sm text-label-sm font-mono text-secondary px-2 py-0.5 rounded bg-secondary/10">STREAMING</span>
+</div>
+<!-- Micro Sparkline SVG Chart -->
+<div class="h-28 w-full bg-surface-container-lowest rounded-lg p-2 flex flex-col justify-between overflow-hidden relative">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm font-mono z-10">
+<span>ACTIVE POWER SAMPLES (LAST 60s)</span>
+<span class="text-primary font-bold" id="inspector-load">575.2 W</span>
+</div>
+<!-- Simple vector sparkline visualization -->
+<svg class="w-full h-16 text-primary mt-1" preserveaspectratio="none" viewbox="0 0 300 60">
+<defs>
+<lineargradient id="sparkline-grad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#4cd7f6" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#4cd7f6" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,45 Q15,40 30,42 T60,35 T90,38 T120,25 T150,28 T180,20 T210,30 T240,22 T270,18 T300,24 L300,60 L0,60 Z" fill="url(#sparkline-grad)"></path>
+<path d="M0,45 Q15,40 30,42 T60,35 T90,38 T120,25 T150,28 T180,20 T210,30 T240,22 T270,18 T300,24" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Inspector Specs -->
+<div class="grid grid-cols-2 gap-2 text-on-surface-variant font-mono font-label-sm text-label-sm">
+<div class="p-2 bg-surface-container rounded">
+<div class="text-outline">AC VOLTAGE</div>
+<div class="text-on-surface font-semibold text-body-md">230.1 V RMS</div>
+</div>
+<div class="p-2 bg-surface-container rounded">
+<div class="text-outline">LINE CURRENT</div>
+<div class="text-on-surface font-semibold text-body-md">2.50 A</div>
+</div>
+<div class="p-2 bg-surface-container rounded">
+<div class="text-outline">POWER FACTOR</div>
+<div class="text-on-surface font-semibold text-body-md">0.96 LAG</div>
+</div>
+<div class="p-2 bg-surface-container rounded">
+<div class="text-outline">CT RATIO CAL</div>
+<div class="text-secondary font-semibold text-body-md">1.000 (Nominal)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification / Status Pop-up (JS Controlled) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none p-4 rounded-xl bg-surface-container-high text-on-surface shadow-[0_4px_24px_rgba(0,0,0,0.5)] flex items-center gap-3" id="toast-notify">
+<span class="material-symbols-outlined text-primary text-xl" id="toast-icon">info</span>
+<span class="font-body-md text-body-md font-medium" id="toast-msg">Operation completed successfully</span>
+</div>
+<!-- Modal Dialog for Subnet Discovery -->
+<div class="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm hidden items-center justify-center p-4" id="scan-modal">
+<div class="w-full max-w-lg rounded-xl bg-surface-container-low p-space-lg space-y-space-md shadow-2xl relative">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-2xl animate-spin">cyclone</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Subnet Discovery In Progress</h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeScanModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Sending mDNS query packets to UDP port 5353 and ARP broadcasting across <code class="text-primary font-mono">192.168.1.1 - 192.168.1.254</code>.
+      </p>
+<div class="space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm font-mono text-outline">
+<span>PROGRESS</span>
+<span>78%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+<div class="bg-secondary h-2 rounded-full transition-all duration-500" style="width: 78%"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg space-y-2 max-h-36 overflow-y-auto font-mono font-label-sm text-label-sm">
+<div class="text-secondary flex justify-between">
+<span>FOUND: ESP32-S3 (3C:61:05:44:9A:12)</span>
+<span>192.168.1.142</span>
+</div>
+<div class="text-outline flex justify-between">
+<span>HOST: Gateway-Router (00:11:32:AA:BB:CC)</span>
+<span>192.168.1.1</span>
+</div>
+<div class="text-outline flex justify-between">
+<span>HOST: Desktop-WS (E0:D5:5E:21:44:10)</span>
+<span>192.168.1.104</span>
+</div>
+</div>
+<div class="flex justify-end gap-space-sm pt-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:bg-surface-bright" onclick="closeScanModal()">Close</button>
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-fixed" onclick="claimDiscoveredNode()">Claim ESP32-S3 (192.168.1.142)</button>
+</div>
+</div>
+</div>
+<script>
+    function showToast(msg, icon = 'check_circle') {
+      const toast = document.getElementById('toast-notify');
+      const toastMsg = document.getElementById('toast-msg');
+      const toastIcon = document.getElementById('toast-icon');
+      if (!toast || !toastMsg || !toastIcon) return;
+      toastMsg.textContent = msg;
+      toastIcon.textContent = icon;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
+    }
+
+    function autoGenerateHwId() {
+      const randHex = Math.floor(Math.random() * 0xFFFFF).toString(16).toUpperCase().padStart(5, '0');
+      const input = document.getElementById('input-hw-id');
+      if (input) {
+        input.value = 'ESP32_' + randHex;
+        showToast('Generated ID: ' + input.value, 'tag');
+      }
+    }
+
+    function generateSecretKey() {
+      const randToken = Array.from(crypto.getRandomValues(new Uint8Array(10)))
+        .map(b => b.toString(16).padStart(2, '0')).join('');
+      const input = document.getElementById('input-security-token');
+      if (input) {
+        input.value = 'vtx_sec_' + randToken;
+        showToast('New HMAC Secret Generated', 'key');
+      }
+    }
+
+    function handleDeviceRegister() {
+      const name = document.getElementById('input-friendly-name').value;
+      const hwId = document.getElementById('input-hw-id').value;
+      showToast('Node ' + hwId + ' registered! Downloading config.h...', 'download_done');
+      
+      const configBlob = new Blob([
+        `// VOLTIX IoT Node Provisioning Header\n` +
+        `#define VOLTIX_NODE_ID "${hwId}"\n` +
+        `#define VOLTIX_NODE_NAME "${name}"\n` +
+        `#define VOLTIX_SECURITY_KEY "${document.getElementById('input-security-token').value}"\n` +
+        `#define VOLTIX_HEARTBEAT_SEC ${document.getElementById('slider-timeout').value}\n`
+      ], { type: 'text/plain' });
+      
+      const dlLink = document.createElement('a');
+      dlLink.href = URL.createObjectURL(configBlob);
+      dlLink.download = `${hwId}_config.h`;
+      dlLink.click();
+    }
+
+    function inspectNode(id, name) {
+      const title = document.getElementById('inspector-title');
+      const load = document.getElementById('inspector-load');
+      if (title) title.textContent = `Live Probe: ${id}`;
+      if (load) {
+        if (id === 'ESP32_01') load.textContent = '575.2 W';
+        else if (id === 'ESP32_02') load.textContent = '940.8 W';
+        else if (id === 'ESP32_03') load.textContent = '1,220.5 W';
+        else load.textContent = '0.0 W (Idle)';
+      }
+      showToast(`Attached telemetry stream to ${id} (${name})`, 'sensors');
+    }
+
+    function calibrateSensor(id) {
+      showToast(`CT Zero-Offset calibration triggered for ${id}. Keep load steady for 3s.`, 'tune');
+    }
+
+    function rebootNode(id) {
+      showToast(`Remote reboot packet dispatched to ${id} via MQTT`, 'restart_alt');
+    }
+
+    function deregisterNode(id) {
+      if (confirm(`Deregister IoT Node ${id}? All telemetry history will be archived.`)) {
+        showToast(`Node ${id} removed from active gateway manifest`, 'delete');
+      }
+    }
+
+    function closeScanModal() {
+      const modal = document.getElementById('scan-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function openScanModal() {
+      const modal = document.getElementById('scan-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function claimDiscoveredNode() {
+      closeScanModal();
+      document.getElementById('input-friendly-name').value = 'Discovered Plant Node';
+      document.getElementById('input-hw-id').value = 'ESP32_S3_9A12';
+      document.getElementById('select-sensor-type').value = 'ct-ads1115';
+      showToast('Loaded 192.168.1.142 details into Provisioning Form', 'verified');
+    }
+
+    document.getElementById('btn-trigger-scan')?.addEventListener('click', openScanModal);
+    document.getElementById('btn-claim-node')?.addEventListener('click', claimDiscoveredNode);
+
+    document.getElementById('btn-open-register')?.addEventListener('click', () => {
+      document.getElementById('input-friendly-name')?.focus();
+      showToast('Ready to provision new IoT hardware node', 'add');
+    });
+
+    document.getElementById('btn-export-fleet')?.addEventListener('click', () => {
+      showToast('Exporting manifest.json for 4 IoT hardware nodes...', 'file_download');
+    });
+
+    document.getElementById('btn-refresh-grid')?.addEventListener('click', () => {
+      showToast('Subnet node state re-synchronized across 4 devices', 'sync');
+    });
+
+    // Client-side quick filter
+    document.getElementById('filter-input')?.addEventListener('input', function(e) {
+      const q = e.target.value.toLowerCase();
+      const rows = document.querySelectorAll('#device-table-rows tr');
+      rows.forEach(r => {
+        const text = r.textContent.toLowerCase();
+        r.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</div></main></div></body></html>
