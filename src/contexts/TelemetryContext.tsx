@@ -45,6 +45,7 @@ interface TelemetryContextType {
   // Actions
   setStreamMode: (mode: StreamMode) => void;
   setSelectedDeviceId: (id: string) => void;
+  syncBackendDevices: (backendNodes: DeviceNode[]) => void;
   toggleStreaming: () => void;
   clearBuffer: () => void;
   zeroCalibrate: (nodeId?: string) => Promise<void>;
@@ -345,6 +346,37 @@ export const TelemetryProvider: React.FC<{ children: ReactNode }> = ({ children 
     showToast(`Virtual Node ${newId} registered in simulation fleet!`, 'verified', 'success');
   }, [devices.length, showToast]);
 
+  const syncBackendDevices = useCallback((backendNodes: DeviceNode[]) => {
+    setDevices((prevFleet) => {
+      if (!backendNodes || backendNodes.length === 0) {
+        return prevFleet;
+      }
+      const merged = backendNodes.map((bNode) => {
+        const existing = prevFleet.find((p) => p.id === bNode.id);
+        if (existing) {
+          return {
+            ...bNode,
+            powerWatts: existing.powerWatts || bNode.powerWatts,
+            voltageV: existing.voltageV || bNode.voltageV,
+            currentA: existing.currentA || bNode.currentA,
+            powerFactor: existing.powerFactor || bNode.powerFactor,
+            phase: existing.phase || bNode.phase,
+            subLocation: existing.subLocation || bNode.subLocation,
+            rssiDbm: existing.rssiDbm || bNode.rssiDbm,
+            relayClosed: existing.relayClosed ?? bNode.relayClosed,
+            sensorTypeKey: existing.sensorTypeKey || bNode.sensorTypeKey,
+          };
+        }
+        return bNode;
+      });
+
+      if (!merged.some((d) => d.id === selectedDeviceId) && merged.length > 0) {
+        setSelectedDeviceId(merged[0].id);
+      }
+      return merged;
+    });
+  }, [selectedDeviceId]);
+
   const deregisterDevice = useCallback((id: string) => {
     setDevices((prev) => {
       const remaining = prev.filter((d) => d.id !== id);
@@ -434,6 +466,7 @@ export const TelemetryProvider: React.FC<{ children: ReactNode }> = ({ children 
         heartbeatSecAgo,
         setStreamMode,
         setSelectedDeviceId,
+        syncBackendDevices,
         toggleStreaming,
         clearBuffer,
         zeroCalibrate,

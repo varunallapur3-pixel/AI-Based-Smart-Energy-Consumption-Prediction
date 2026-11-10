@@ -28,6 +28,29 @@ lerna-debug.log*
 .env.production.local
 *.env
 
+# SQLite Databases & Personal / Local Data
+*.db
+*.sqlite
+*.sqlite3
+voltix.db
+
+# Python & Backend Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+htmlcov/
+.coverage
+
+# ML Model Artifacts (exclude generated binary artifacts)
+backend/model_artifacts/*
+!backend/model_artifacts/.gitkeep
+*.joblib
+*.pkl
+
 # Editor & OS files
 .vscode/
 .idea/

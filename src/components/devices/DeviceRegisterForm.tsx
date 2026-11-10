@@ -3,17 +3,22 @@ import { ProvisionFormInput, SensorInterfaceType } from '../../types/device';
 import { generateHardwareId, generateHmacSecret, downloadConfigFile } from '../../services/deviceService';
 import { useTelemetry } from '../../contexts/TelemetryContext';
 import { useToast } from '../../contexts/ToastContext';
+import { DeviceCreate } from '../../services/api/types';
 
 interface DeviceRegisterFormProps {
   initialHwId?: string;
   initialFriendlyName?: string;
   initialSensorType?: SensorInterfaceType;
+  onSubmitDevice?: (data: DeviceCreate, payload: ProvisionFormInput) => Promise<void>;
+  isSubmitting?: boolean;
 }
 
 export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
   initialHwId = 'VIRT_NODE_05',
   initialFriendlyName = '',
   initialSensorType = 'pzem',
+  onSubmitDevice,
+  isSubmitting = false,
 }) => {
   const { registerDevice } = useTelemetry();
   const { showToast } = useToast();
@@ -23,13 +28,16 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
   const [sensorType, setSensorType] = useState<SensorInterfaceType>(initialSensorType);
   const [phase, setPhase] = useState('PH-A');
   const [location, setLocation] = useState('');
-  const [securityToken, setSecurityToken] = useState('vtx_sec_4f92d8e091b64cb1a2e8');
+  // Dynamically initialize ephemeral synthetic token without hardcoded secrets
+  const [securityToken, setSecurityToken] = useState(() => generateHmacSecret());
   const [heartbeatSec, setHeartbeatSec] = useState(30);
   const [fallbackToDemo, setFallbackToDemo] = useState(true);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const handleAutoGenerateId = () => {
     const newId = generateHardwareId();
     setHwId(newId);
+    setFormError(null);
     showToast(`Generated ID: ${newId}`, 'tag', 'info');
   };
 
@@ -39,32 +47,65 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
     showToast('New cryptographic HMAC token generated', 'key', 'info');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     if (!friendlyName.trim()) {
+      setFormError('Please specify a friendly name for the node.');
       showToast('Please specify a friendly name for the node', 'warning', 'warning');
       return;
     }
+    if (!hwId.trim()) {
+      setFormError('Hardware Node Identifier cannot be empty.');
+      return;
+    }
+
+    setFormError(null);
 
     const payload: ProvisionFormInput = {
-      friendlyName,
-      hwId,
+      friendlyName: friendlyName.trim(),
+      hwId: hwId.trim(),
       sensorType,
       phase,
-      location: location || 'Main Facility Feeder',
+      location: location.trim() || 'Main Facility Feeder',
       securityToken,
       heartbeatSec,
       fallbackToDemo,
     };
 
-    registerDevice(payload);
-    downloadConfigFile(payload);
-    showToast(`Downloaded ${hwId}_config.h firmware header`, 'download_done', 'success');
+    if (onSubmitDevice) {
+      const backendData: DeviceCreate = {
+        device_id: hwId.trim(),
+        name: friendlyName.trim(),
+        device_type: 'SIMULATED', // Virtual node is explicitly SIMULATED
+        location: location.trim() || 'Main Facility Feeder',
+        status: 'ONLINE',
+        firmware_version: 'v2.1.4_STABLE',
+      };
 
-    // Reset with next generated ID
-    setFriendlyName('');
-    setHwId(generateHardwareId());
-    setLocation('');
+      try {
+        await onSubmitDevice(backendData, payload);
+        downloadConfigFile(payload);
+        showToast(`Downloaded ${hwId.trim()}_config.h firmware header`, 'download_done', 'success');
+
+        // Reset with next generated ID on success
+        setFriendlyName('');
+        setHwId(generateHardwareId());
+        setLocation('');
+      } catch (err: unknown) {
+        const error = err as Error;
+        setFormError(error.message || 'Failed to register device in backend.');
+      }
+    } else {
+      registerDevice(payload);
+      downloadConfigFile(payload);
+      showToast(`Downloaded ${hwId}_config.h firmware header`, 'download_done', 'success');
+
+      setFriendlyName('');
+      setHwId(generateHardwareId());
+      setLocation('');
+    }
   };
 
   return (
@@ -88,6 +129,13 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
         <code className="text-primary font-mono">config.h</code>).
       </p>
 
+      {formError && (
+        <div className="p-2.5 rounded-lg bg-error-container/20 border border-error/30 text-error font-body-sm text-body-sm flex items-center gap-2">
+          <span className="material-symbols-outlined text-base shrink-0">error</span>
+          <span>{formError}</span>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-space-sm">
         {/* Friendly Name */}
         <div className="space-y-1">
@@ -98,9 +146,13 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
             type="text"
             required
             value={friendlyName}
-            onChange={(e) => setFriendlyName(e.target.value)}
+            onChange={(e) => {
+              setFriendlyName(e.target.value);
+              setFormError(null);
+            }}
+            disabled={isSubmitting}
             placeholder="e.g. Workshop Air Compressor"
-            className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5"
+            className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5 disabled:opacity-50"
           />
         </div>
 
@@ -113,7 +165,8 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
             <button
               type="button"
               onClick={handleAutoGenerateId}
-              className="font-label-sm text-label-sm text-primary hover:underline font-mono"
+              disabled={isSubmitting}
+              className="font-label-sm text-label-sm text-primary hover:underline font-mono disabled:opacity-50"
             >
               Auto-Generate
             </button>
@@ -122,8 +175,12 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
             type="text"
             required
             value={hwId}
-            onChange={(e) => setHwId(e.target.value)}
-            className="w-full bg-surface-container-lowest text-on-surface font-mono font-label-md text-label-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5"
+            onChange={(e) => {
+              setHwId(e.target.value);
+              setFormError(null);
+            }}
+            disabled={isSubmitting}
+            className="w-full bg-surface-container-lowest text-on-surface font-mono font-label-md text-label-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5 disabled:opacity-50"
           />
         </div>
 
@@ -135,7 +192,8 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
           <select
             value={sensorType}
             onChange={(e) => setSensorType(e.target.value as SensorInterfaceType)}
-            className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5"
+            disabled={isSubmitting}
+            className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5 disabled:opacity-50"
           >
             <option value="pzem">PZEM-004T v3.0 (AC Voltage, Current, Active Power, Energy)</option>
             <option value="ct-ads1115">Non-invasive Split-Core CT Clamp + ADS1115 I2C</option>
@@ -153,7 +211,8 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
             <select
               value={phase}
               onChange={(e) => setPhase(e.target.value)}
-              className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5"
+              disabled={isSubmitting}
+              className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5 disabled:opacity-50"
             >
               <option value="PH-A">Phase A (Red)</option>
               <option value="PH-B">Phase B (Yellow)</option>
@@ -170,8 +229,9 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
               type="text"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              disabled={isSubmitting}
               placeholder="e.g. Bay 2 Breaker #8"
-              className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5"
+              className="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-white/5 disabled:opacity-50"
             />
           </div>
         </div>
@@ -180,12 +240,13 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
         <div className="space-y-1 pt-1">
           <div className="flex justify-between items-center">
             <label className="font-label-sm text-label-sm font-mono text-outline uppercase">
-              Security Token / Node Secret
+              Simulated Token / Secret (Ephemeral)
             </label>
             <button
               type="button"
               onClick={handleRegenerateToken}
-              className="font-label-sm text-label-sm text-primary hover:underline font-mono"
+              disabled={isSubmitting}
+              className="font-label-sm text-label-sm text-primary hover:underline font-mono disabled:opacity-50"
             >
               Regenerate
             </button>
@@ -201,6 +262,9 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
               key
             </span>
           </div>
+          <p className="font-label-sm text-[11px] text-outline font-mono">
+            Synthetic test key for simulated node. Contains no production credentials.
+          </p>
         </div>
 
         {/* Heartbeat Timeout Slider */}
@@ -216,7 +280,8 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
             step="5"
             value={heartbeatSec}
             onChange={(e) => setHeartbeatSec(Number(e.target.value))}
-            className="w-full accent-primary h-1 bg-surface-container-high rounded-lg cursor-pointer"
+            disabled={isSubmitting}
+            className="w-full accent-primary h-1 bg-surface-container-high rounded-lg cursor-pointer disabled:opacity-50"
           />
           <div className="flex justify-between text-outline font-label-sm text-label-sm font-mono">
             <span>10s (Fast)</span>
@@ -239,6 +304,7 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
               type="checkbox"
               checked={fallbackToDemo}
               onChange={(e) => setFallbackToDemo(e.target.checked)}
+              disabled={isSubmitting}
               className="sr-only peer"
             />
             <div className="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary after:border-gray-300 after:border-0 after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
@@ -249,10 +315,20 @@ export const DeviceRegisterForm: React.FC<DeviceRegisterFormProps> = ({
         <div className="pt-2">
           <button
             type="submit"
-            className="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-fixed text-on-primary font-headline-md text-headline-md font-semibold text-center transition-all shadow-[0_0_16px_rgba(76,215,246,0.25)] flex items-center justify-center gap-2"
+            disabled={isSubmitting}
+            className="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary-fixed text-on-primary font-headline-md text-headline-md font-semibold text-center transition-all shadow-[0_0_16px_rgba(76,215,246,0.25)] flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
           >
-            <span className="material-symbols-outlined text-lg">memory</span>
-            <span>Commit & Download Firmware Header</span>
+            {isSubmitting ? (
+              <>
+                <span className="material-symbols-outlined text-lg animate-spin">cyclone</span>
+                <span>Registering Node in Backend...</span>
+              </>
+            ) : (
+              <>
+                <span className="material-symbols-outlined text-lg">memory</span>
+                <span>Commit & Download Firmware Header</span>
+              </>
+            )}
           </button>
         </div>
       </form>

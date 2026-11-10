@@ -1,0 +1,32 @@
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# SQLite Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Pytest & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local Environment Variables
+.env
+.env.local
+*.env
+
+# ML Model Artifacts (exclude generated binary artifacts)
+model_artifacts/*
+!model_artifacts/.gitkeep
+*.joblib
+*.pkl

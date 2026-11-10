@@ -1,29 +1,66 @@
-import React, { useState } from 'react';
-import { useDeviceFleet } from '../hooks/useDeviceFleet';
+import React, { useState, useEffect } from 'react';
+import { useBackendDevices } from '../hooks/useBackendDevices';
 import { useTelemetry } from '../contexts/TelemetryContext';
 import { useToast } from '../contexts/ToastContext';
 import { DeviceTable } from '../components/devices/DeviceTable';
 import { DeviceRegisterForm } from '../components/devices/DeviceRegisterForm';
 import { DeviceInspector } from '../components/devices/DeviceInspector';
+import { DeviceEditModal } from '../components/devices/DeviceEditModal';
 import { SubnetScanModal } from '../components/devices/SubnetScanModal';
 import { exportFleetManifestJson, MOCK_DISCOVERED_NODES } from '../services/deviceService';
-import { DeviceNode } from '../types/device';
+import { DeviceNode, ProvisionFormInput } from '../types/device';
+import { DeviceCreate, DeviceUpdate, computeFleetMetrics } from '../services/api';
 
 export const DeviceManagementPage: React.FC = () => {
-  const { devices, stats, claimDiscoveredNode } = useDeviceFleet();
+  const {
+    devices,
+    stats: backendStats,
+    isLoading,
+    isMutating,
+    error: backendError,
+    backendOnline,
+    fetchDevices,
+    createDevice,
+    updateDevice,
+    deleteDevice,
+  } = useBackendDevices();
+
   const { selectedDevice, setSelectedDeviceId } = useTelemetry();
   const { showToast } = useToast();
 
   const [scanModalOpen, setScanModalOpen] = useState(false);
-  const [inspectedNode, setInspectedNode] = useState<DeviceNode>(selectedDevice);
+  const [editingNode, setEditingNode] = useState<DeviceNode | null>(null);
+  const [inspectedNode, setInspectedNode] = useState<DeviceNode>(selectedDevice || devices[0]);
+
+  // Keep inspected node in sync when devices load
+  useEffect(() => {
+    if (devices.length > 0) {
+      const match = devices.find((d) => d.id === inspectedNode?.id) || devices[0];
+      setInspectedNode(match);
+    }
+  }, [devices]);
 
   const handleExportManifest = () => {
     exportFleetManifestJson(devices);
     showToast(`Exported manifest.json for ${devices.length} IoT hardware nodes`, 'file_download', 'success');
   };
 
-  const handleClaimUnclaimed = () => {
-    claimDiscoveredNode(MOCK_DISCOVERED_NODES[0]);
+  const handleClaimUnclaimed = async () => {
+    const disc = MOCK_DISCOVERED_NODES[0];
+    const newId = `VIRT_NODE_${Math.floor(Math.random() * 8999 + 1000)}`;
+    try {
+      await createDevice({
+        device_id: newId,
+        name: disc.model,
+        device_type: 'SIMULATED',
+        location: 'Facility Sub-Feeder (Emulated)',
+        status: 'ONLINE',
+        firmware_version: 'v2.1.4_STABLE',
+      });
+      showToast(`Discovered node ${newId} registered in backend!`, 'verified', 'success');
+    } catch {
+      // Error handled by hook
+    }
   };
 
   const handleInspect = (node: DeviceNode) => {
@@ -31,6 +68,21 @@ export const DeviceManagementPage: React.FC = () => {
     setSelectedDeviceId(node.id);
     showToast(`Attached telemetry stream to ${node.id} (${node.name})`, 'sensors', 'info');
   };
+
+  const handleCreateDevice = async (data: DeviceCreate, _payload: ProvisionFormInput) => {
+    await createDevice(data);
+  };
+
+  const handleSaveEdit = async (deviceId: string, updateData: DeviceUpdate) => {
+    await updateDevice(deviceId, updateData);
+  };
+
+  const handleDeleteDevice = async (deviceId: string) => {
+    await deleteDevice(deviceId);
+  };
+
+  // Accurately compute fleet metrics without falsely claiming backend fault detection
+  const metrics = computeFleetMetrics(backendStats, devices);
 
   return (
     <div className="p-space-md lg:p-margin-desktop space-y-space-lg">
@@ -84,6 +136,39 @@ export const DeviceManagementPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Backend Disconnection / Error Notice */}
+      {!backendOnline && (
+        <div className="p-space-md rounded-xl bg-error-container/20 border border-error/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md animate-in fade-in duration-200">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-error/20 flex items-center justify-center text-error shrink-0">
+              <span className="material-symbols-outlined text-2xl">cloud_off</span>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-label-sm text-label-sm font-mono font-semibold text-error uppercase">
+                  FASTAPI BACKEND DISCONNECTED
+                </span>
+                <span className="h-2 w-2 rounded-full bg-error"></span>
+              </div>
+              <p className="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                {backendError || 'Unable to reach backend at /api/devices. Displaying fallback simulated fleet.'}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={fetchDevices}
+            disabled={isLoading}
+            className="px-3.5 py-1.5 rounded-lg bg-error text-on-error font-label-sm text-label-sm font-mono font-semibold hover:opacity-90 transition-opacity shrink-0 flex items-center gap-1.5 disabled:opacity-50"
+          >
+            <span className={`material-symbols-outlined text-sm ${isLoading ? 'animate-spin' : ''}`}>
+              refresh
+            </span>
+            <span>RETRY CONNECTION</span>
+          </button>
+        </div>
+      )}
+
       {/* Status Ticker & Metric Strip (4 Columns) */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-space-md">
         <div className="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between border border-white/5">
@@ -92,7 +177,7 @@ export const DeviceManagementPage: React.FC = () => {
               TOTAL PROVISIONED
             </div>
             <div className="font-headline-lg text-headline-lg font-semibold text-on-surface mt-1 font-mono">
-              {stats.totalCount} <span className="font-label-sm text-label-sm font-normal text-outline">NODES</span>
+              {metrics.total} <span className="font-label-sm text-label-sm font-normal text-outline">NODES</span>
             </div>
           </div>
           <div className="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
@@ -106,7 +191,7 @@ export const DeviceManagementPage: React.FC = () => {
               EMULATED TELEMETRY
             </div>
             <div className="font-headline-lg text-headline-lg font-semibold text-secondary mt-1 font-mono">
-              {stats.standbyCount} <span className="font-label-sm text-label-sm font-normal text-secondary-container">SIMULATED</span>
+              {metrics.simulated} <span className="font-label-sm text-label-sm font-normal text-secondary-container">SIMULATED</span>
             </div>
           </div>
           <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
@@ -120,7 +205,7 @@ export const DeviceManagementPage: React.FC = () => {
               PHYSICAL HARDWARE
             </div>
             <div className="font-headline-lg text-headline-lg font-semibold text-tertiary mt-1 font-mono">
-              {stats.activeCount} <span className="font-label-sm text-label-sm font-normal text-tertiary-container">CONNECTED</span>
+              {metrics.physical} <span className="font-label-sm text-label-sm font-normal text-tertiary-container">CONNECTED</span>
             </div>
           </div>
           <div className="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
@@ -131,14 +216,14 @@ export const DeviceManagementPage: React.FC = () => {
         <div className="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between border border-white/5">
           <div>
             <div className="font-label-sm text-label-sm font-mono uppercase text-on-surface-variant">
-              FAULT COND.
+              OFFLINE / UNKNOWN
             </div>
             <div className="font-headline-lg text-headline-lg font-semibold text-on-surface mt-1 font-mono">
-              {stats.faultCount} <span className="font-label-sm text-label-sm font-normal text-outline">NOMINAL</span>
+              {metrics.inactiveTotal} <span className="font-label-sm text-label-sm font-normal text-outline">NODES</span>
             </div>
           </div>
           <div className="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-outline">
-            <span className="material-symbols-outlined text-2xl">verified</span>
+            <span className="material-symbols-outlined text-2xl">power_off</span>
           </div>
         </div>
       </div>
@@ -179,7 +264,8 @@ export const DeviceManagementPage: React.FC = () => {
           <button
             type="button"
             onClick={handleClaimUnclaimed}
-            className="px-3 py-1.5 bg-secondary-container hover:bg-secondary text-on-secondary rounded font-label-sm text-label-sm font-semibold transition-all flex items-center gap-1 shadow-sm"
+            disabled={isMutating}
+            className="px-3 py-1.5 bg-secondary-container hover:bg-secondary text-on-secondary rounded font-label-sm text-label-sm font-semibold transition-all flex items-center gap-1 shadow-sm disabled:opacity-50"
           >
             <span>+ Add Virtual Node</span>
             <span className="material-symbols-outlined text-xs">arrow_forward</span>
@@ -191,7 +277,15 @@ export const DeviceManagementPage: React.FC = () => {
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
         {/* Primary Fleet Table & Diagnostics (8 cols) */}
         <div className="xl:col-span-8 flex flex-col gap-space-md">
-          <DeviceTable onInspect={handleInspect} />
+          <DeviceTable
+            devices={devices}
+            onInspect={handleInspect}
+            onEdit={(node) => setEditingNode(node)}
+            onDelete={handleDeleteDevice}
+            onRefresh={fetchDevices}
+            isLoading={isLoading}
+            isBackendConnected={backendOnline}
+          />
 
           {/* Subnet Diagnostics & Latency Logs Panel */}
           <div className="rounded-xl bg-surface-container-low shadow-md p-space-md space-y-space-md border border-white/5">
@@ -273,13 +367,24 @@ export const DeviceManagementPage: React.FC = () => {
         {/* Right Sidebar: Provision Form + Inspector (4 cols) */}
         <div className="xl:col-span-4 flex flex-col gap-space-md">
           <div id="registration-panel">
-            <DeviceRegisterForm />
+            <DeviceRegisterForm
+              onSubmitDevice={handleCreateDevice}
+              isSubmitting={isMutating}
+            />
           </div>
-          <DeviceInspector node={inspectedNode} />
+          {inspectedNode && <DeviceInspector node={inspectedNode} />}
         </div>
       </div>
 
       <SubnetScanModal isOpen={scanModalOpen} onClose={() => setScanModalOpen(false)} />
+
+      <DeviceEditModal
+        isOpen={Boolean(editingNode)}
+        onClose={() => setEditingNode(null)}
+        node={editingNode}
+        onSave={handleSaveEdit}
+        isSubmitting={isMutating}
+      />
     </div>
   );
 };

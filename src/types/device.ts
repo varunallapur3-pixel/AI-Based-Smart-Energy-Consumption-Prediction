@@ -1,4 +1,4 @@
-export type DeviceStatus = 'ONLINE' | 'STANDBY' | 'FAULT' | 'OFFLINE';
+export type DeviceStatus = 'ONLINE' | 'STANDBY' | 'FAULT' | 'OFFLINE' | 'UNKNOWN';
 
 export type SensorInterfaceType = 'pzem' | 'ct-ads1115' | 'modbus-rs485' | 'ade7758';
 
